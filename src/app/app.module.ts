@@ -24,8 +24,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-import {ToastrModule} from 'ngx-toastr';
 import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -56,8 +56,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ToastrModule.forRoot(),
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
