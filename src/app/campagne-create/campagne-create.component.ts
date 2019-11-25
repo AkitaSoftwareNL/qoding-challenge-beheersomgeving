@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import {CampagneService} from '../campagne.service';
+import {Campagne} from '../campagne';
 
 @Component({
   selector: 'app-campagne-create',
@@ -12,12 +13,17 @@ export class CampagneCreateComponent {
     naam: [null, Validators.required],
   });
 
-  title = "Campagne aanmaken";
+  title = 'Campagne aanmaken';
 
-  constructor(private fb: FormBuilder, private toast: ToastrService) {}
+  constructor(private fb: FormBuilder, private campagneService: CampagneService) {}
 
   onSubmit(campagne) {
-    if (!campagne.naam)
-    this.toast.info(`Campagne is aangemaakt met de naam: ${campagne.naam}`);
+    this.add(campagne.naam);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.campagneService.addCampagne({ name } as Campagne);
   }
 }

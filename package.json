@@ -1,5 +1,5 @@
 {
-  "name": "qoding-challenge-beheersomgeving",
+  "name": "beheeromgeving-new",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -21,7 +21,6 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "angular-in-memory-web-api": "^0.9.0",
     "hammerjs": "^2.0.8",
     "ngx-toastr": "^11.2.1",
     "rxjs": "~6.4.0",

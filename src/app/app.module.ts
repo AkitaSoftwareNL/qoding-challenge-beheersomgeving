@@ -18,16 +18,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CampagneComponent } from './campagne/campagne.component';
-import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { CampagneCreateComponent } from './campagne-create/campagne-create.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-import {ToastrModule} from "ngx-toastr";
-import {HttpClientModule} from "@angular/common/http";
-import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
-import {InMemoryDataService} from "./in-memory-data.service";
+import {ToastrModule} from 'ngx-toastr';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -59,10 +57,7 @@ import {InMemoryDataService} from "./in-memory-data.service";
     MatRadioModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
