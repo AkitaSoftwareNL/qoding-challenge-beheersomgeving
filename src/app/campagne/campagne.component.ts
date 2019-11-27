@@ -16,16 +16,15 @@ export class CampagneComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Campagne>;
   dataSource: CampagneDatasource;
-
   displayedColumns = ['name', 'aanpassen', 'verwijderen'];
   title = 'Campagnes';
 
   constructor(private campagneService: CampagneService) {
+    this.dataSource = new CampagneDatasource(this.campagneService);
+    this.dataSource.getCampagnes();
   }
 
   ngOnInit() {
-    this.dataSource = new CampagneDatasource(this.campagneService);
-    this.dataSource.getCampagnes();
   }
 
   ngAfterViewInit() {
