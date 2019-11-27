@@ -20,11 +20,11 @@ export class CampagneComponent implements AfterViewInit, OnInit {
   title = 'Campagnes';
 
   constructor(private campagneService: CampagneService) {
+    this.dataSource = new CampagneDatasource(this.campagneService);
+    this.dataSource.getCampagnes();
   }
 
   ngOnInit() {
-    this.dataSource = new CampagneDatasource(this.campagneService);
-    this.dataSource.getCampagnes();
   }
 
   ngAfterViewInit() {
