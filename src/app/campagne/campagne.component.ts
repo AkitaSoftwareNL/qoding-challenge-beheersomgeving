@@ -16,7 +16,6 @@ export class CampagneComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Campagne>;
   dataSource: CampagneDatasource;
-
   displayedColumns = ['name', 'aanpassen', 'verwijderen'];
   title = 'Campagnes';
 
