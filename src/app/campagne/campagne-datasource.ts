@@ -16,8 +16,9 @@ export class CampagneDatasource extends DataSource<Campagne> {
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(private campagneService: CampagneService) {
+  constructor(campagnes: Campagne[]) {
     super();
+    this.data = campagnes;
   }
 
   /**
@@ -69,11 +70,6 @@ export class CampagneDatasource extends DataSource<Campagne> {
         default: return 0;
       }
     });
-  }
-
-  getCampagnes(): void {
-    this.campagneService.getCampagnes()
-      .subscribe(campagne => this.data = campagne);
   }
 }
 

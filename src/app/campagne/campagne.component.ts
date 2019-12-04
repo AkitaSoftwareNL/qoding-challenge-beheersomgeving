@@ -18,13 +18,19 @@ export class CampagneComponent implements AfterViewInit, OnInit {
   dataSource: CampagneDatasource;
   displayedColumns = ['name', 'aanpassen', 'verwijderen'];
   title = 'Campagnes';
+  private campagnes: Campagne[];
 
   constructor(private campagneService: CampagneService) {
-    this.dataSource = new CampagneDatasource(this.campagneService);
-    this.dataSource.getCampagnes();
+    this.getCampagnes();
+    this.dataSource = new CampagneDatasource(this.campagnes);
   }
 
   ngOnInit() {
+  }
+
+  getCampagnes(): void {
+    this.campagneService.getCampagnes()
+      .subscribe(campagne => this.campagnes = campagne);
   }
 
   ngAfterViewInit() {
