@@ -5,4 +5,5 @@ export class Campagne {
   startedBy: string;
   category: string;
   participants: string;
+  date: number;
 }

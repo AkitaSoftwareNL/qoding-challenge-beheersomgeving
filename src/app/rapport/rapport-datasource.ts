@@ -18,7 +18,6 @@ export class RapportDataSource extends DataSource<Campagne> {
   constructor(campagne: Campagne[]) {
     super();
     this.data = campagne;
-    console.log(this.data);
   }
 
   /**
