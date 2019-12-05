@@ -18,7 +18,7 @@ describe('Question Service', () => {
     });
   }));
 
-  it('should create get', () => {
+  it('should be created', () => {
     const service: QuestionService = TestBed.get(QuestionService);
     expect(service).toBeTruthy();
   });
