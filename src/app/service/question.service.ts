@@ -9,10 +9,8 @@ import { Question } from '../class/question';
   providedIn: 'root'
 })
 
-
-
 export class QuestionService {
-  private questionCreate = '';
+  private questionCreate = 'http://localhost:8080/questions/create';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

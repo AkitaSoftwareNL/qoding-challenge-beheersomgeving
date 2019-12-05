@@ -1,6 +1,3 @@
-import { Answer } from '../class/answer';
-
-
 export class Question {
   constructor(
     public questionID: number,
@@ -9,7 +6,7 @@ export class Question {
     public attachment: string,
     public stateID: number,
     public givenAnswer: string,
-    public possibleAnswer: Answer[]
+    public possibleAnswer: string[]
   ) { }
 
 }

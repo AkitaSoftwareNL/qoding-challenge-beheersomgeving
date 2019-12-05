@@ -18,14 +18,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CampagneComponent } from './campagne/campagne.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { CampagneCreateComponent } from './campagne-create/campagne-create.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {ToastrModule} from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {ToastrModule} from 'ngx-toastr';
     CampagneComponent,
     CampagneComponent,
     CampagneCreateComponent,
+    OpenQuestionCreateComponent,
   ],
   imports: [
     BrowserModule,
