@@ -1,0 +1,11 @@
+<div class="grid-container">
+  <div>
+    <button class="type-button" mat-button [matMenuTriggerFor]="menu">Type Vragen</button>
+    <mat-menu #menu="matMenu">
+      <button (click)="setType('open')" mat-menu-item>Open vragen</button>
+    </mat-menu>
+
+  </div>
+  <app-open-question-create (question)="onAddQuestion($event)" *ngIf="QuestionType == 'open'">
+  </app-open-question-create>
+</div>
