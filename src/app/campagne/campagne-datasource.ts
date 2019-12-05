@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import {Campagne} from '../campagne';
-import {CampagneService} from '../campagne.service';
 
 /**
  * Data source for the CampagneTable view. This class should
