@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CampagneService {
   private campagneGetURL = 'http://localhost:8080/campaign';
   private campagneCreateURL = 'http://localhost:8080/campaign/create';
+  private campagneRapportGetURL = 'http://localhost:8080/report/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -20,7 +21,7 @@ export class CampagneService {
   getCampagnes(): Observable<Campagne[]> {
     return this.http.get<Campagne[]>(this.campagneGetURL)
       .pipe(
-        catchError(this.handleError<Campagne[]>('getCampagnes', []))
+        catchError(this.handleError<Campagne[]>('ophalen van campagnes voor overzicht pagina.', []))
       );
   }
 
@@ -33,7 +34,7 @@ export class CampagneService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
-      alert('Campagne kan niet aangemaakt worden.');
+      alert('Er is wat mis gegaan bij het ' + operation);
       return of(result as T);
     };
   }
@@ -43,6 +44,13 @@ export class CampagneService {
     return this.http.post<Campagne>(this.campagneCreateURL, campagne, this.httpOptions)
       .pipe(
         tap((newCampagne: Campagne) => alert(`Campagne Toegevoegd w/ name=${campagne.name}`)),
-        catchError(this.handleError<Campagne>('Campagne Toevoegen')));
+        catchError(this.handleError<Campagne>('toevoegen van een Campagne.')));
+  }
+
+  getRapportCampagnes(): Observable<Campagne[]> {
+    return this.http.get<Campagne[]>(this.campagneRapportGetURL)
+      .pipe(
+        catchError(this.handleError<Campagne[]>('ophalen van Campagnes voor Rapportage.', []))
+      );
   }
 }

@@ -1,5 +1,5 @@
 export class Campagne {
-  id: bigint;
+  id: number;
   name: string;
   amountOfQuestions: bigint;
   startedBy: string;
