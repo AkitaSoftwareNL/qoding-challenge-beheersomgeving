@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
+import { QuestionCreateComponent } from './question-create/question-create.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { OpenQuestionCreateComponent } from './open-question-create/open-questio
     CampagneComponent,
     CampagneCreateComponent,
     OpenQuestionCreateComponent,
+    QuestionCreateComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,8 +19,8 @@ export class QuestionService {
   addQuestion(question: Question) {
     return this.http.post<Question>(this.questionCreate, question, this.httpOptions)
       .pipe(
-        tap((newQuestion: Question) => alert('')),
-        catchError(this.handleError<Question>('Vraag Toevoegen')));
+        tap((newQuestion: Question) => alert(`Vraag Toegevoegd`)),
+        catchError(this.handleError<Question>()));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
