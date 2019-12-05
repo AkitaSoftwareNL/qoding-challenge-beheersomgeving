@@ -22,8 +22,11 @@ export class QuestionCreateComponent {
 
   onAddQuestion(question: Question) {
     console.log(question);
-    this.questionService.addQuestion(question)
-      .subscribe();
+    if (question.question != null && question.question !== '') {
+      this.questionService.addQuestion(question)
+        .subscribe();
+
+    }
   }
 
 }
