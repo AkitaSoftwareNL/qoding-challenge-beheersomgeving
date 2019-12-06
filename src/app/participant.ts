@@ -8,4 +8,5 @@ export class Participant {
   timeInMillis: number;
   phonenumber: string;
   email: string;
+  rank: number;
 }

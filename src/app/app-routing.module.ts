@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'campagnes', component: CampagneComponent },
   { path: 'campagne-create', component: CampagneCreateComponent },
   { path: 'rapportage', component: RapportComponent },
-  { path: 'rapportage/1', component: RapportParticipantsComponent },
-  { path: 'rapportage/1/23', component: RapportParticipantQuestionComponent },
+  { path: 'rapportage/:campaignID', component: RapportParticipantsComponent },
+  { path: 'rapportage/:campaignID/:participantID', component: RapportParticipantQuestionComponent },
 ];
 
 @NgModule({

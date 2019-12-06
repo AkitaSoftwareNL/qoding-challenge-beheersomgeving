@@ -56,15 +56,15 @@ export class CampagneService {
       );
   }
 
-  getParticipantsCampaign(): Observable<ParticipantList> {
-    return this.http.get<ParticipantList>(this.campagneRapportGetURL + '1')
+  getParticipantsCampaign(campagneID: number): Observable<ParticipantList> {
+    return this.http.get<ParticipantList>(this.campagneRapportGetURL + campagneID)
       .pipe(
         catchError(this.handleError<ParticipantList>('ophalen van Deelnemers in Campagnes voor Rapportage.', null))
       );
   }
 
-  getQuestionsParticipantsCampaign(): Observable<AnswerListReport> {
-    return this.http.get<AnswerListReport>(this.campagneRapportGetURL + '1' + '/1')
+  getQuestionsParticipantsCampaign(campagneID: number, participantID: number): Observable<AnswerListReport> {
+    return this.http.get<AnswerListReport>(this.campagneRapportGetURL + campagneID + '/' + participantID)
       .pipe(
         catchError(this.handleError<AnswerListReport>('ophalen van Antwoorden van Deelnemers in Campagnes voor Rapportage.', null))
       );

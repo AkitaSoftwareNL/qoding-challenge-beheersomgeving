@@ -17,9 +17,9 @@ export class RapportParticipantsDataSource extends DataSource<Participant> {
 
   constructor(participant: Participant[]) {
     super();
-    // for (let i = 0; i < participant.length; i++) {
-    //   participant[i].formattedTime = this.msToTime(participant[i].timeInMillis);
-    // }
+    for (let i = 0; i < participant.length; i++) {
+      participant[i].rank = i + 1;
+    }
     this.data = participant;
   }
 
@@ -70,7 +70,9 @@ export class RapportParticipantsDataSource extends DataSource<Participant> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.firstname, b.firstname, isAsc);
+        case 'rank': return compare(a.rank, b.rank, isAsc);
         case 'answer': return compare(+a.amountOfRightAwnseredQuestions, +b.amountOfRightAwnseredQuestions, isAsc);
+        case 'time': return compare(+a.timeInMillis, +b.timeInMillis, isAsc);
         default: return 0;
       }
     });
