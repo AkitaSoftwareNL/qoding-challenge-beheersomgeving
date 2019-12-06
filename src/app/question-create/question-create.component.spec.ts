@@ -13,11 +13,17 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 
 import { QuestionCreateComponent } from './question-create.component';
+import { QuestionService } from '../service/question.service';
+import { DebugElement } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Question } from '../class/question';
 
 describe('QuestionCreateComponent', () => {
   let component: QuestionCreateComponent;
   let fixture: ComponentFixture<QuestionCreateComponent>;
-
+  let debugElement: DebugElement;
+  let service: QuestionService;
+  let spy;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -43,10 +49,24 @@ describe('QuestionCreateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(QuestionCreateComponent);
     component = fixture.componentInstance;
+    debugElement = fixture.debugElement;
+    service = debugElement.injector.get(QuestionService);
+    spy = spyOn(service, 'addQuestion').and.returnValue(new Observable<Question>());
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set type', () => {
+    const type = 'multiple';
+    component.setType(type);
+    expect(component.QuestionType).toBe(type);
+  });
+
+  it('should call QuestionService', () => {
+    component.onAddQuestion(new Question(-1, 'type', 'question', 'attachment', -1, 'given answer', []));
+    expect(spy).toHaveBeenCalled();
   });
 });

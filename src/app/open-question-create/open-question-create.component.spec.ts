@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -11,11 +11,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 
 import { OpenQuestionCreateComponent } from './open-question-create.component';
+import { DebugElement, EventEmitter } from '@angular/core';
+import { Question } from '../class/question';
 
 describe('OpenQuestionCreateComponent', () => {
   let component: OpenQuestionCreateComponent;
   let fixture: ComponentFixture<OpenQuestionCreateComponent>;
-
+  let debugElement: DebugElement;
+  let spy;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -36,6 +39,7 @@ describe('OpenQuestionCreateComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OpenQuestionCreateComponent);
+    debugElement = fixture.debugElement;
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -43,4 +47,25 @@ describe('OpenQuestionCreateComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit a Question object', () => {
+    component.question.subscribe(q => {
+      expect(q).toEqual(new Question(-1, 'open', 'question', 'attachment', 0, '', []));
+    });
+
+    let form = new FormBuilder().group({
+      question: 'question',
+      attachment: 'attachment',
+    });
+
+    form.patchValue({
+      question: 'question',
+      attachment: 'attachment'
+    });
+    console.log(form);
+
+    component.onSubmit(form);
+
+  });
+
 });
