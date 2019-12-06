@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CampagneService} from '../campagne.service';
 
 @Component({
   selector: 'app-rapport-participant-question',
@@ -7,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RapportParticipantQuestionComponent implements OnInit {
   title = '[participant naam]';
+  private dataSource;
+  private campagne: string;
 
-  constructor() { }
+  constructor(private campagneService: CampagneService) {
+    this.getQuestions();
+  }
 
   ngOnInit() {
+  }
+
+  getQuestions(): void {
+    this.campagneService.getQuestionsParticipantsCampaign()
+      .subscribe(question => {
+        this.dataSource = question;
+        if (question.insertion == null) { question.insertion = ''; }
+        this.title = question.firstname + ' ' + question.insertion + ' ' + question.lastname;
+        this.campagne = 'campagnenaampie';
+      });
   }
 
 }

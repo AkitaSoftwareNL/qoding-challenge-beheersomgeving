@@ -1,51 +1,26 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { map } from 'rxjs/operators';
+import {map, min} from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-
-// TODO: Replace this with your own data model type
-export interface RapportParticipantsItem {
-  name: string;
-  rank: number;
-}
-
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: RapportParticipantsItem[] = [
-  {rank: 1, name: 'Hydrogen'},
-  {rank: 2, name: 'Helium'},
-  {rank: 3, name: 'Lithium'},
-  {rank: 4, name: 'Beryllium'},
-  {rank: 5, name: 'Boron'},
-  {rank: 6, name: 'Carbon'},
-  {rank: 7, name: 'Nitrogen'},
-  {rank: 8, name: 'Oxygen'},
-  {rank: 9, name: 'Fluorine'},
-  {rank: 10, name: 'Neon'},
-  {rank: 11, name: 'Sodium'},
-  {rank: 12, name: 'Magnesium'},
-  {rank: 13, name: 'Aluminum'},
-  {rank: 14, name: 'Silicon'},
-  {rank: 15, name: 'Phosphorus'},
-  {rank: 16, name: 'Sulfur'},
-  {rank: 17, name: 'Chlorine'},
-  {rank: 18, name: 'Argon'},
-  {rank: 19, name: 'Potassium'},
-  {rank: 20, name: 'Calcium'},
-];
+import {Participant} from '../participant';
 
 /**
  * Data source for the RapportParticipants view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class RapportParticipantsDataSource extends DataSource<RapportParticipantsItem> {
-  data: RapportParticipantsItem[] = EXAMPLE_DATA;
+export class RapportParticipantsDataSource extends DataSource<Participant> {
+  data: Participant[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(participant: Participant[]) {
     super();
+    // for (let i = 0; i < participant.length; i++) {
+    //   participant[i].formattedTime = this.msToTime(participant[i].timeInMillis);
+    // }
+    this.data = participant;
   }
 
   /**
@@ -53,7 +28,7 @@ export class RapportParticipantsDataSource extends DataSource<RapportParticipant
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<RapportParticipantsItem[]> {
+  connect(): Observable<Participant[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -77,7 +52,7 @@ export class RapportParticipantsDataSource extends DataSource<RapportParticipant
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: RapportParticipantsItem[]) {
+  private getPagedData(data: Participant[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -86,7 +61,7 @@ export class RapportParticipantsDataSource extends DataSource<RapportParticipant
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: RapportParticipantsItem[]) {
+  private getSortedData(data: Participant[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -94,8 +69,8 @@ export class RapportParticipantsDataSource extends DataSource<RapportParticipant
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'rank': return compare(+a.rank, +b.rank, isAsc);
+        case 'name': return compare(a.firstname, b.firstname, isAsc);
+        case 'answer': return compare(+a.amountOfRightAwnseredQuestions, +b.amountOfRightAwnseredQuestions, isAsc);
         default: return 0;
       }
     });

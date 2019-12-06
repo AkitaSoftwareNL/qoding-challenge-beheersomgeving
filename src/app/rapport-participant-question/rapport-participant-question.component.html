@@ -1,19 +1,19 @@
 <div class="grid-container">
   <h1 class="mat-h1">{{title}}</h1>
-  <p class="breadcrum"><a routerLink="/rapportage">Rapportage</a> / <a routerLink="/rapportage/1">CampagneNaam</a> / <span class="bold breadcrum-selected">DeelnemerNaam</span></p>
-  <mat-expansion-panel>
+  <p class="breadcrum"><a routerLink="/rapportage">Rapportage</a> / <a routerLink="/rapportage/1">{{campagne}}</a> / <span class="bold breadcrum-selected">{{title}}</span></p>
+  <mat-expansion-panel *ngFor="let answer in dataSource; let i = index">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <span class="bold"># 1 </span>&nbsp;&nbsp;<span class="chip">Multiple Choice</span>
+        <span class="bold"># {{i}} </span>&nbsp;&nbsp;<span class="chip">Multiple Choice</span>
       </mat-panel-title>
       <mat-panel-description>
-        <span class="bold">Vraagstelling:</span>&nbsp;&nbsp;Noem 1 Unit-test framework.
+        <span class="bold">Vraagstelling:</span>&nbsp;&nbsp;{{answer.question}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>
     <span class="bold small-title">Gegeven antwoord:</span>
       <br>
-      Hier komt het antwoord op de vraag.
+      {{answer.givenAnswer}}
     </p>
 
   </mat-expansion-panel>

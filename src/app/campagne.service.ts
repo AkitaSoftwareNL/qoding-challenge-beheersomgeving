@@ -4,6 +4,8 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import {ParticipantList} from './participantList';
+import {AnswerList} from './answerList';
 
 @Injectable({
   providedIn: 'root'
@@ -53,4 +55,19 @@ export class CampagneService {
         catchError(this.handleError<Campagne[]>('ophalen van Campagnes voor Rapportage.', []))
       );
   }
+
+  getParticipantsCampaign(): Observable<ParticipantList> {
+    return this.http.get<ParticipantList>(this.campagneRapportGetURL + '1')
+      .pipe(
+        catchError(this.handleError<ParticipantList>('ophalen van Deelnemers in Campagnes voor Rapportage.', null))
+      );
+  }
+
+  getQuestionsParticipantsCampaign(): Observable<AnswerList> {
+    return this.http.get<AnswerList>(this.campagneRapportGetURL + '1' + '/1')
+      .pipe(
+        catchError(this.handleError<AnswerList>('ophalen van Antwoorden van Deelnemers in Campagnes voor Rapportage.', null))
+      );
+  }
 }
+

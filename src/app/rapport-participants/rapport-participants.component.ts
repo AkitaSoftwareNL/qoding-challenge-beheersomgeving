@@ -2,7 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { RapportParticipantsDataSource, RapportParticipantsItem } from './rapport-participants-datasource';
+import { RapportParticipantsDataSource } from './rapport-participants-datasource';
+import {CampagneService} from '../campagne.service';
+import {Participant} from '../participant';
 
 @Component({
   selector: 'app-rapport-participants',
@@ -12,15 +14,27 @@ import { RapportParticipantsDataSource, RapportParticipantsItem } from './rappor
 export class RapportParticipantsComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<RapportParticipantsItem>;
+  @ViewChild(MatTable, {static: false}) table: MatTable<Participant>;
   dataSource: RapportParticipantsDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['rank', 'name', 'answer', 'time'];
   title = '[CampagneNaam]';
 
+
+  constructor(private campagneService: CampagneService) {
+    this.getParticipants();
+  }
+
   ngOnInit() {
-    this.dataSource = new RapportParticipantsDataSource();
+  }
+
+  getParticipants(): void {
+    this.campagneService.getParticipantsCampaign()
+      .subscribe(participant => {
+        this.dataSource = new RapportParticipantsDataSource(participant.participants);
+        this.title = participant.campaignName;
+      });
   }
 
   ngAfterViewInit() {
