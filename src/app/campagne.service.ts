@@ -5,7 +5,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import {ParticipantList} from './participantList';
-import {AnswerList} from './answerList';
+import {AnswerListReport} from './answerListReport';
 
 @Injectable({
   providedIn: 'root'
@@ -63,10 +63,10 @@ export class CampagneService {
       );
   }
 
-  getQuestionsParticipantsCampaign(): Observable<AnswerList> {
-    return this.http.get<AnswerList>(this.campagneRapportGetURL + '1' + '/1')
+  getQuestionsParticipantsCampaign(): Observable<AnswerListReport> {
+    return this.http.get<AnswerListReport>(this.campagneRapportGetURL + '1' + '/1')
       .pipe(
-        catchError(this.handleError<AnswerList>('ophalen van Antwoorden van Deelnemers in Campagnes voor Rapportage.', null))
+        catchError(this.handleError<AnswerListReport>('ophalen van Antwoorden van Deelnemers in Campagnes voor Rapportage.', null))
       );
   }
 }

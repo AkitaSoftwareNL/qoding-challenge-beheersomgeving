@@ -1,6 +1,6 @@
-export class Answer {
+export class AnswerReport {
   givenAnswer: string;
   question: string;
-  questionType: string;
   state: number;
+  questionType: string;
 }

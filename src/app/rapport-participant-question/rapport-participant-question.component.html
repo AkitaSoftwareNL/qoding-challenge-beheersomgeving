@@ -1,12 +1,12 @@
 <div class="grid-container">
   <h1 class="mat-h1">{{title}}</h1>
-  <p class="breadcrum"><a routerLink="/rapportage">Rapportage</a> / <a routerLink="/rapportage/1">{{campagne}}</a> / <span class="bold breadcrum-selected">{{title}}</span></p>
-  <mat-expansion-panel *ngFor="let answer in dataSource; let i = index">
+  <p class="breadcrum"><a routerLink="/rapportage">Rapportage</a> / <a routerLink="/rapportage/{{campagneID}}">{{campagne}}</a> / <span class="bold breadcrum-selected">{{title}}</span></p>
+  <mat-expansion-panel class="content" *ngFor="let answer of dataSource; let i = index">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <span class="bold"># {{i}} </span>&nbsp;&nbsp;<span class="chip">Multiple Choice</span>
+        <span class="bold rank"># {{i+1}} </span>&nbsp;&nbsp;<span class="chip">{{answer.questionType | uppercase}}</span>
       </mat-panel-title>
-      <mat-panel-description>
+      <mat-panel-description class="truncate left">
         <span class="bold">Vraagstelling:</span>&nbsp;&nbsp;{{answer.question}}
       </mat-panel-description>
     </mat-expansion-panel-header>

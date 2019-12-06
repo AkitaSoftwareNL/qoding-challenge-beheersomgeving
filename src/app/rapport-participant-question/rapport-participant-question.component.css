@@ -5,3 +5,31 @@
 .breadcrum-selected {
   color: #555555;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content {
+  width:100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rank {
+  max-height: 20px;
+  min-width: 30px;
+}
+
+.chip {
+  max-height: 20px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.left {
+  flex-grow: 100;
+}

@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { RapportDataSource } from './rapport-datasource';
 import {Campagne} from '../campagne';
-import {CampagneDatasource} from '../campagne/campagne-datasource';
 import {CampagneService} from '../campagne.service';
 
 @Component({
