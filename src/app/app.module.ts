@@ -26,7 +26,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
-
+import { VragenComponent } from './vragen/vragen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +34,7 @@ import {ToastrModule} from 'ngx-toastr';
     CampagneComponent,
     CampagneComponent,
     CampagneCreateComponent,
+    VragenComponent,
   ],
   imports: [
     BrowserModule,
