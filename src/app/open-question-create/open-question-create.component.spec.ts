@@ -53,15 +53,11 @@ describe('OpenQuestionCreateComponent', () => {
       expect(q).toEqual(new Question(-1, 'open', 'question', 'attachment', 0, '', []));
     });
 
-    let form = new FormBuilder().group({
+    let form = {
       question: 'question',
       attachment: 'attachment',
-    });
+    };
 
-    form.patchValue({
-      question: 'question',
-      attachment: 'attachment'
-    });
     console.log(form);
 
     component.onSubmit(form);
