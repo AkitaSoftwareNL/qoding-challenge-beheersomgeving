@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, Validators, Form, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, Form } from '@angular/forms';
 import { Question } from '../class/question';
 
 @Component({
@@ -20,7 +19,7 @@ export class OpenQuestionCreateComponent {
   constructor(private fb: FormBuilder) { }
 
   onSubmit(form: any) {
-    let question = new Question(-1, 'open', form.question, form.attachment, 0, '', []);
+    let question = new Question(-1, 'open', 'JAVA', form.question, form.attachment, 0, '', []);
     this.question.emit(question);
   }
 
