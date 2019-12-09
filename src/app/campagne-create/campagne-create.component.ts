@@ -20,7 +20,6 @@ export class CampagneCreateComponent {
   constructor(private toast: ToastrService, private fb: FormBuilder, private campagneService: CampagneService) {}
 
   onSubmit(info: Campagne) {
-    console.log(info);
     this.add(info);
   }
 
