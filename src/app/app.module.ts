@@ -35,6 +35,7 @@ import { VragenComponent } from './vragen/vragen.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionJudgingComponent } from './question-judging/question-judging.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { QuestionJudgingComponent } from './question-judging/question-judging.co
     ToastrModule.forRoot(),
     MatExpansionModule,
     MatChipsModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,21 +11,22 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class CampagneCreateComponent {
   campagneForm = this.fb.group({
-    naam: [null, Validators.required],
+    name: [null, Validators.required],
+    amountOfQuestions: [3, Validators.required],
   });
 
   title = 'Campagne aanmaken';
 
   constructor(private toast: ToastrService, private fb: FormBuilder, private campagneService: CampagneService) {}
 
-  onSubmit(campagne) {
-    this.add(campagne.naam);
+  onSubmit(info: Campagne) {
+    this.add(info);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.campagneService.addCampagne({ name } as Campagne)
+  add(campagne: Campagne): void {
+    campagne.name = campagne.name.trim();
+    if (!campagne.name) { return; }
+    this.campagneService.addCampagne(campagne)
       .subscribe(success => {});
   }
 }
