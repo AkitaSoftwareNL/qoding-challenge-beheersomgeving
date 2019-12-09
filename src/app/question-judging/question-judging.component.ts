@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Campagne } from '../campagne';
+import { Campagne } from '../class/campagne';
 import { QuestionService } from '../service/question.service';
 import { GivenAnswer } from '../class/given-answer';
 import { QuestionDatasource } from './question-datasource';
