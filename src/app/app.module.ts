@@ -34,6 +34,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { VragenComponent } from './vragen/vragen.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { QuestionCreateComponent } from './question-create/question-create.compo
     ToastrModule.forRoot(),
     MatExpansionModule,
     MatChipsModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,11 +9,17 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Campagnenaam" formControlName="naam">
-              <mat-error *ngIf="campagneForm.controls['naam'].hasError('required')">
+              <input matInput placeholder="Campagnenaam" formControlName="name">
+              <mat-error *ngIf="campagneForm.controls['name'].hasError('required')">
                 Campagnenaam is <strong>vereist</strong>
               </mat-error>
             </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="mat-calendar-body-label">Aantal Vragen</span>
+            <mat-slider thumbLabel min="1" value="3" max="20" formControlName="amountOfQuestions" class="full-width"></mat-slider>
           </div>
         </div>
       </mat-card-content>
