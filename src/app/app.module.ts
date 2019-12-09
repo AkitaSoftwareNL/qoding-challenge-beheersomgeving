@@ -31,6 +31,9 @@ import { RapportParticipantsComponent } from './rapport-participants/rapport-par
 import { RapportParticipantQuestionComponent } from './rapport-participant-question/rapport-participant-question.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatChipsModule} from '@angular/material/chips';
+import { VragenComponent } from './vragen/vragen.component';
+import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
+import { QuestionCreateComponent } from './question-create/question-create.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import {MatChipsModule} from '@angular/material/chips';
     CampagneComponent,
     CampagneComponent,
     CampagneCreateComponent,
+    VragenComponent,
+    OpenQuestionCreateComponent,
+    QuestionCreateComponent,
     RapportComponent,
     RapportParticipantsComponent,
     RapportParticipantQuestionComponent,
