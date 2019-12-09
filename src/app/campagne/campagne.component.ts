@@ -3,8 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { CampagneDatasource } from './campagne-datasource';
-import {Campagne} from '../class/campagne';
-import {CampagneService} from '../campagne.service';
+import { Campagne } from '../class/campagne';
+import { CampagneService } from '../campagne.service';
 
 @Component({
   selector: 'app-campagne',
@@ -12,11 +12,11 @@ import {CampagneService} from '../campagne.service';
   styleUrls: ['./campagne.component.css']
 })
 export class CampagneComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<Campagne>;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatTable, { static: false }) table: MatTable<Campagne>;
   dataSource: CampagneDatasource;
-  displayedColumns = ['id', 'name', 'aanpassen', 'verwijderen'];
+  displayedColumns = ['id', 'name', 'beoordeel', 'aanpassen', 'verwijderen'];
   title = 'Campagnes';
   private campagnes: Campagne[];
 
