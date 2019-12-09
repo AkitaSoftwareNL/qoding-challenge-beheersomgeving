@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {CampagneService} from '../campagne.service';
-import {Campagne} from '../campagne';
+import {Campagne} from '../class/campagne';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({

@@ -10,9 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CampagneCreateComponent } from './campagne-create.component';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {Campagne} from '../campagne';
-import {CampagneService} from '../campagne.service';
-import {Observable} from 'rxjs';
+import {Campagne} from '../class/campagne';
 
 describe('CampagneCreateComponent', () => {
   let component: CampagneCreateComponent;

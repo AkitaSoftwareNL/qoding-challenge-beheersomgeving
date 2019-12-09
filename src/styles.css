@@ -2,3 +2,49 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.small-title {
+  font-size: smaller;
+  color: #999999;
+}
+
+.chip {
+  border-radius: 20px;
+  background-color: #c23350;
+  color: white;
+  padding: 3px 5px;
+  margin-left: 10px;
+  font-weight: 600;
+  font-size: x-small;
+
+}
+
+.full-width-table {
+  width: 100%;
+}
