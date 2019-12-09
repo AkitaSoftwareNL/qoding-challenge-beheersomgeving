@@ -51,11 +51,12 @@ export class QuestionJudgingComponent implements OnInit, AfterViewInit {
   sendAnwser(givenAnswer: GivenAnswer, state: number) {
     givenAnswer.stateId = state;
     this.questionService.setAnswers(givenAnswer).subscribe();
-    let index = this.dataSource.data.indexOf(givenAnswer);
+    const index = this.dataSource.data.indexOf(givenAnswer);
     if (index > -1) {
       this.dataSource.data.splice(index, 1);
     }
     this.table.renderRows();
     this.changeDetectorRefs.detectChanges();
+    location.reload();
   }
 }
