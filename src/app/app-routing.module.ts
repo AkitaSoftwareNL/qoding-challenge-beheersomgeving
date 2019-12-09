@@ -10,6 +10,9 @@ const routes: Routes = [
   { path: 'campagnes', component: CampagneComponent },
   { path: 'campagne-create', component: CampagneCreateComponent },
   { path: 'question-create', component: QuestionCreateComponent },
+  { path: 'rapportage', component: RapportComponent },
+  { path: 'rapportage/:campaignID', component: RapportParticipantsComponent },
+  { path: 'rapportage/:campaignID/:participantID', component: RapportParticipantQuestionComponent },
   { path: 'judge/:campaignID', component: QuestionJudgingComponent },
 ];
 

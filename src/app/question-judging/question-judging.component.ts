@@ -21,15 +21,16 @@ export class QuestionJudgingComponent implements OnInit, AfterViewInit {
   campagne: Campagne;
   displayedColumns = ['vraag', 'antwoord', 'correct', 'in-correct'];
   dataSource: QuestionDatasource;
+  campaignID: string;
   constructor(
     private route: ActivatedRoute,
     private questionService: QuestionService,
     private changeDetectorRefs: ChangeDetectorRef
   ) {
-    const campaignID = this.route.snapshot.paramMap.get('campaignID');
+    this.campaignID = this.route.snapshot.paramMap.get('campaignID');
     this.campagne = new Campagne();
     this.campagne.name = 'A Name';
-    this.questionService.getAnswers(campaignID, 1).subscribe(succes => {
+    this.questionService.getAnswers(this.campaignID, 1).subscribe(succes => {
       this.dataSource = new QuestionDatasource(succes);
       this.dataSource.data.forEach(element => {
         this.questionService.getQuestion(element.questionId).subscribe(result => {
@@ -50,13 +51,18 @@ export class QuestionJudgingComponent implements OnInit, AfterViewInit {
 
   sendAnwser(givenAnswer: GivenAnswer, state: number) {
     givenAnswer.stateId = state;
-    this.questionService.setAnswers(givenAnswer).subscribe();
-    const index = this.dataSource.data.indexOf(givenAnswer);
-    if (index > -1) {
-      this.dataSource.data.splice(index, 1);
-    }
-    this.table.renderRows();
-    this.changeDetectorRefs.detectChanges();
-    location.reload();
+    this.questionService.setAnswers(this.campaignID, 1, givenAnswer).subscribe(suc => {
+      this.questionService.getAnswers(this.campaignID, 1).subscribe(succes => {
+        this.dataSource = new QuestionDatasource(succes);
+        this.ngAfterViewInit();
+        this.table.renderRows();
+        this.changeDetectorRefs.detectChanges();
+        this.dataSource.data.forEach(element => {
+          this.questionService.getQuestion(element.questionId).subscribe(result => {
+            element.question = result.question;
+          });
+        });
+      });
+    });
   }
 }

@@ -29,6 +29,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionJudgingComponent } from './question-judging/question-judging.component';
+import { RapportComponent } from './rapport/rapport.component';
+import { RapportParticipantsComponent } from './rapport-participants/rapport-participants.component';
+import { RapportParticipantQuestionComponent } from './rapport-participant-question/rapport-participant-question.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { QuestionJudgingComponent } from './question-judging/question-judging.co
     OpenQuestionCreateComponent,
     QuestionCreateComponent,
     QuestionJudgingComponent,
+    RapportComponent,
+    RapportParticipantsComponent,
+    RapportParticipantQuestionComponent
   ],
   imports: [
     BrowserModule,

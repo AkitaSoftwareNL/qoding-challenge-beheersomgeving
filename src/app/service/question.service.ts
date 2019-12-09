@@ -32,8 +32,8 @@ export class QuestionService {
     return this.http.get<Question>('http://localhost:8080/questions/' + id, this.httpOptions);
   }
 
-  setAnswers(answer: GivenAnswer) {
-    return this.http.post('http://localhost:8080/answers/update', answer, this.httpOptions);
+  setAnswers(campagneID, state, answer: GivenAnswer) {
+    return this.http.post<GivenAnswer[]>('http://localhost:8080/answers/update', answer, this.httpOptions);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

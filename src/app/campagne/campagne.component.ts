@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { CampagneDatasource } from './campagne-datasource';
-import { Campagne } from '../campagne';
+import { Campagne } from '../class/campagne';
 import { CampagneService } from '../campagne.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class CampagneComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatTable, { static: false }) table: MatTable<Campagne>;
   dataSource: CampagneDatasource;
-  displayedColumns = ['name', 'beoordeel', 'aanpassen', 'verwijderen'];
+  displayedColumns = ['id', 'name', 'beoordeel', 'aanpassen', 'verwijderen'];
   title = 'Campagnes';
   private campagnes: Campagne[];
 
