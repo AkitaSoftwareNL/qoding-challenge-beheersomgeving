@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
+import { QuestionJudgingComponent } from './question-judging/question-judging.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { QuestionCreateComponent } from './question-create/question-create.compo
     CampagneCreateComponent,
     OpenQuestionCreateComponent,
     QuestionCreateComponent,
+    QuestionJudgingComponent,
   ],
   imports: [
     BrowserModule,
