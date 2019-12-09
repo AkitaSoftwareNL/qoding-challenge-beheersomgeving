@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { RapportDataSource } from './rapport-datasource';
-import {Campagne} from '../campagne';
+import {Campagne} from '../class/campagne';
 import {CampagneService} from '../campagne.service';
 
 @Component({

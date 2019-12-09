@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { RapportParticipantsDataSource } from './rapport-participants-datasource';
 import {CampagneService} from '../campagne.service';
-import {Participant} from '../participant';
+import {Participant} from '../class/participant';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 

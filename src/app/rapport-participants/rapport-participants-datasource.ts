@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {map, min} from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {Participant} from '../participant';
+import {Participant} from '../class/participant';
 
 /**
  * Data source for the RapportParticipants view. This class should

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CampagneService} from '../campagne.service';
-import {AnswerListReport} from '../answerListReport';
-import {AnswerReport} from '../answerReport';
+import {AnswerListReport} from '../class/answerListReport';
+import {AnswerReport} from '../class/answerReport';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 

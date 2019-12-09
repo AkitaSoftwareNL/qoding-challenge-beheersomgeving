@@ -5,6 +5,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
 import { RapportParticipantsComponent } from './rapport-participants.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('RapportParticipantsComponent', () => {
   let component: RapportParticipantsComponent;
@@ -18,7 +19,8 @@ describe('RapportParticipantsComponent', () => {
         MatPaginatorModule,
         MatSortModule,
         MatTableModule,
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
@@ -26,9 +28,5 @@ describe('RapportParticipantsComponent', () => {
     fixture = TestBed.createComponent(RapportParticipantsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should compile', () => {
-    expect(component).toBeTruthy();
   });
 });

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Campagne} from './campagne';
+import {Campagne} from './class/campagne';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import {ParticipantList} from './participantList';
-import {AnswerListReport} from './answerListReport';
+import {ParticipantList} from './class/participantList';
+import {AnswerListReport} from './class/answerListReport';
 
 @Injectable({
   providedIn: 'root'
