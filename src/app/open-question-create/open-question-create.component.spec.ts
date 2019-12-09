@@ -50,7 +50,7 @@ describe('OpenQuestionCreateComponent', () => {
 
   it('should emit a Question object', () => {
     component.question.subscribe(q => {
-      expect(q).toEqual(new Question(-1, 'open', 'question', 'attachment', 0, '', []));
+      expect(q).toEqual(new Question(-1, 'open', 'JAVA', 'question', 'attachment', 0, '', []));
     });
 
     let form = {

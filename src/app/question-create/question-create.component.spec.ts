@@ -66,7 +66,7 @@ describe('QuestionCreateComponent', () => {
   });
 
   it('should call QuestionService', () => {
-    component.onAddQuestion(new Question(-1, 'type', 'question', 'attachment', -1, 'given answer', []));
+    component.onAddQuestion(new Question(-1, 'type', 'category', 'question', 'attachment', -1, 'given answer', []));
     expect(spy).toHaveBeenCalled();
   });
 });

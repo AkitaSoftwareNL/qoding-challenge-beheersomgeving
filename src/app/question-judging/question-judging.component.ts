@@ -25,7 +25,6 @@ export class QuestionJudgingComponent implements OnInit, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private questionService: QuestionService,
-    private changeDetectorRefs: ChangeDetectorRef
   ) {
     this.campaignID = this.route.snapshot.paramMap.get('campaignID');
     this.campagne = new Campagne();
@@ -44,6 +43,10 @@ export class QuestionJudgingComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.setTableData();
+  }
+
+  setTableData() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
@@ -54,9 +57,8 @@ export class QuestionJudgingComponent implements OnInit, AfterViewInit {
     this.questionService.setAnswers(this.campaignID, 1, givenAnswer).subscribe(suc => {
       this.questionService.getAnswers(this.campaignID, 1).subscribe(succes => {
         this.dataSource = new QuestionDatasource(succes);
-        this.ngAfterViewInit();
+        this.setTableData();
         this.table.renderRows();
-        this.changeDetectorRefs.detectChanges();
         this.dataSource.data.forEach(element => {
           this.questionService.getQuestion(element.questionId).subscribe(result => {
             element.question = result.question;
