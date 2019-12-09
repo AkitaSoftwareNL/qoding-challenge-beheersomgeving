@@ -26,6 +26,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
+import { RapportComponent } from './rapport/rapport.component';
+import { RapportParticipantsComponent } from './rapport-participants/rapport-participants.component';
+import { RapportParticipantQuestionComponent } from './rapport-participant-question/rapport-participant-question.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
 import { VragenComponent } from './vragen/vragen.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
@@ -40,6 +45,9 @@ import { QuestionCreateComponent } from './question-create/question-create.compo
     VragenComponent,
     OpenQuestionCreateComponent,
     QuestionCreateComponent,
+    RapportComponent,
+    RapportParticipantsComponent,
+    RapportParticipantQuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +72,8 @@ import { QuestionCreateComponent } from './question-create/question-create.compo
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    MatExpansionModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
