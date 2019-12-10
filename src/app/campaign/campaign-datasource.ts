@@ -3,16 +3,21 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { GivenAnswer } from '../class/given-answer';
+import {Campaign} from '../class/campaign';
 
-export class QuestionDatasource extends DataSource<GivenAnswer> {
-  data: GivenAnswer[];
+/**
+ * Data source for the CampagneTable view. This class should
+ * encapsulate all logic for fetching and manipulating the displayed data
+ * (including sorting, pagination, and filtering).
+ */
+export class CampaignDatasource extends DataSource<Campaign> {
+  data: Campaign[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(givenAnswers: GivenAnswer[]) {
+  constructor(campaigns: Campaign[]) {
     super();
-    this.data = givenAnswers;
+    this.data = campaigns;
   }
 
   /**
@@ -20,7 +25,7 @@ export class QuestionDatasource extends DataSource<GivenAnswer> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<GivenAnswer[]> {
+  connect(): Observable<Campaign[]> {
     const dataMutations = [
       observableOf(this.data),
       this.paginator.page,
@@ -36,13 +41,13 @@ export class QuestionDatasource extends DataSource<GivenAnswer> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() { }
+  disconnect() {}
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: GivenAnswer[]) {
+  private getPagedData(data: Campaign[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -51,7 +56,7 @@ export class QuestionDatasource extends DataSource<GivenAnswer> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: GivenAnswer[]) {
+  private getSortedData(data: Campaign[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -59,7 +64,8 @@ export class QuestionDatasource extends DataSource<GivenAnswer> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.campaignId, b.campaignId, isAsc);
+        case 'name': return compare(a.name, b.name, isAsc);
+        // case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
     });

@@ -1,23 +1,26 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { map } from 'rxjs/operators';
+import {map, min} from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {Campagne} from '../class/campagne';
+import {Participant} from '../class/participant';
 
 /**
- * Data source for the Rapport view. This class should
+ * Data source for the RapportParticipants view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class RapportDataSource extends DataSource<Campagne> {
-  data: Campagne[];
+export class ReportParticipantsDatasource extends DataSource<Participant> {
+  data: Participant[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(campagne: Campagne[]) {
+  constructor(participant: Participant[]) {
     super();
-    this.data = campagne;
+    for (let i = 0; i < participant.length; i++) {
+      participant[i].rank = i + 1;
+    }
+    this.data = participant;
   }
 
   /**
@@ -25,7 +28,7 @@ export class RapportDataSource extends DataSource<Campagne> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Campagne[]> {
+  connect(): Observable<Participant[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -49,7 +52,7 @@ export class RapportDataSource extends DataSource<Campagne> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Campagne[]) {
+  private getPagedData(data: Participant[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -58,7 +61,7 @@ export class RapportDataSource extends DataSource<Campagne> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Campagne[]) {
+  private getSortedData(data: Participant[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -66,9 +69,10 @@ export class RapportDataSource extends DataSource<Campagne> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'campagne': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        case 'datum': return compare(+a.date, +b.date, isAsc);
+        case 'name': return compare(a.firstname, b.firstname, isAsc);
+        case 'rank': return compare(a.rank, b.rank, isAsc);
+        case 'answer': return compare(+a.amountOfRightAwnseredQuestions, +b.amountOfRightAwnseredQuestions, isAsc);
+        case 'time': return compare(+a.timeInMillis, +b.timeInMillis, isAsc);
         default: return 0;
       }
     });

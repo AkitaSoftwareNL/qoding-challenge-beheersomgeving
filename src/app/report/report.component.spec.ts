@@ -4,16 +4,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
-import { RapportComponent } from './rapport.component';
+import { ReportComponent } from './report.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('RapportComponent', () => {
-  let component: RapportComponent;
-  let fixture: ComponentFixture<RapportComponent>;
+  let component: ReportComponent;
+  let fixture: ComponentFixture<ReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RapportComponent ],
+      declarations: [ ReportComponent ],
       imports: [
         NoopAnimationsModule,
         MatPaginatorModule,
@@ -25,7 +25,7 @@ describe('RapportComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RapportComponent);
+    fixture = TestBed.createComponent(ReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

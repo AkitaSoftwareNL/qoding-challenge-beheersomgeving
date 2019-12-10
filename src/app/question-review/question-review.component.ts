@@ -1,36 +1,36 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Campagne } from '../class/campagne';
+import { Campaign } from '../class/campaign';
 import { QuestionService } from '../service/question.service';
 import { GivenAnswer } from '../class/given-answer';
-import { QuestionDatasource } from './question-datasource';
+import { QuestionReviewDatasource } from './question-review-datasource';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-question-judging',
-  templateUrl: './question-judging.component.html',
-  styleUrls: ['./question-judging.component.css']
+  templateUrl: './question-review.component.html',
+  styleUrls: ['./question-review.component.css']
 })
 
-export class QuestionJudgingComponent implements OnInit, AfterViewInit {
+export class QuestionReviewComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatTable, { static: false }) table: MatTable<GivenAnswer>;
-  campagne: Campagne;
+  campaign: Campaign;
   displayedColumns = ['vraag', 'antwoord', 'correct', 'in-correct'];
-  dataSource: QuestionDatasource;
+  dataSource: QuestionReviewDatasource;
   campaignID: string;
   constructor(
     private route: ActivatedRoute,
     private questionService: QuestionService,
   ) {
     this.campaignID = this.route.snapshot.paramMap.get('campaignID');
-    this.campagne = new Campagne();
-    this.campagne.name = 'A Name';
+    this.campaign = new Campaign();
+    this.campaign.name = 'A Name';
     this.questionService.getAnswers(this.campaignID, 1).subscribe(succes => {
-      this.dataSource = new QuestionDatasource(succes);
+      this.dataSource = new QuestionReviewDatasource(succes);
       this.dataSource.data.forEach(element => {
         this.questionService.getQuestion(element.questionId).subscribe(result => {
           element.question = result.question;
@@ -56,7 +56,7 @@ export class QuestionJudgingComponent implements OnInit, AfterViewInit {
     givenAnswer.stateId = state;
     this.questionService.setAnswers(this.campaignID, 1, givenAnswer).subscribe(suc => {
       this.questionService.getAnswers(this.campaignID, 1).subscribe(succes => {
-        this.dataSource = new QuestionDatasource(succes);
+        this.dataSource = new QuestionReviewDatasource(succes);
         this.setTableData();
         this.table.renderRows();
         this.dataSource.data.forEach(element => {

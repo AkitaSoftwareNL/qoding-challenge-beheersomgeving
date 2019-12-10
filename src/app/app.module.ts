@@ -17,40 +17,40 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { CampagneComponent } from './campagne/campagne.component';
+import { CampaignComponent } from './campaign/campaign.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { CampagneCreateComponent } from './campagne-create/campagne-create.component';
+import { CampaignCreateComponent } from './campaign-create/campaign-create.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { RapportComponent } from './rapport/rapport.component';
-import { RapportParticipantsComponent } from './rapport-participants/rapport-participants.component';
-import { RapportParticipantQuestionComponent } from './rapport-participant-question/rapport-participant-question.component';
+import { ReportComponent } from './report/report.component';
+import { ReportParticipantsComponent } from './report-participants/report-participants.component';
+import { ReportParticipantQuestionComponent } from './report-participant-question/report-participant-question.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { VragenComponent } from './vragen/vragen.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
-import { QuestionJudgingComponent } from './question-judging/question-judging.component';
+import { QuestionReviewComponent } from './question-review/question-review.component';
 import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    CampagneComponent,
-    CampagneComponent,
-    CampagneCreateComponent,
+    CampaignComponent,
+    CampaignComponent,
+    CampaignCreateComponent,
     VragenComponent,
     OpenQuestionCreateComponent,
     QuestionCreateComponent,
-    QuestionJudgingComponent,
-    RapportComponent,
-    RapportParticipantsComponent,
-    RapportParticipantQuestionComponent
+    QuestionReviewComponent,
+    ReportComponent,
+    ReportParticipantsComponent,
+    ReportParticipantQuestionComponent
   ],
   imports: [
     BrowserModule,

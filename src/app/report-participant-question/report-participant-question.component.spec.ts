@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RapportParticipantQuestionComponent } from './rapport-participant-question.component';
+import { ReportParticipantQuestionComponent } from './report-participant-question.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
@@ -8,12 +8,12 @@ import {ActivatedRoute, Data} from '@angular/router';
 import {Observable, of} from 'rxjs';
 
 describe('RapportParticipantQuestionComponent', () => {
-  let component: RapportParticipantQuestionComponent;
-  let fixture: ComponentFixture<RapportParticipantQuestionComponent>;
+  let component: ReportParticipantQuestionComponent;
+  let fixture: ComponentFixture<ReportParticipantQuestionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RapportParticipantQuestionComponent ],
+      declarations: [ ReportParticipantQuestionComponent ],
       imports: [
         HttpClientModule,
         ToastrModule.forRoot(),
@@ -29,7 +29,7 @@ describe('RapportParticipantQuestionComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RapportParticipantQuestionComponent);
+    fixture = TestBed.createComponent(ReportParticipantQuestionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

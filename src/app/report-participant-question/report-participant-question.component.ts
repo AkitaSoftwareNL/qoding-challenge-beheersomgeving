@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import {CampagneService} from '../campagne.service';
-import {AnswerListReport} from '../class/answerListReport';
+import {CampaignService} from '../campaign.service';
 import {AnswerReport} from '../class/answerReport';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-rapport-participant-question',
-  templateUrl: './rapport-participant-question.component.html',
-  styleUrls: ['./rapport-participant-question.component.css']
+  templateUrl: './report-participant-question.component.html',
+  styleUrls: ['./report-participant-question.component.css']
 })
-export class RapportParticipantQuestionComponent implements OnInit {
+export class ReportParticipantQuestionComponent implements OnInit {
   title = '[participant naam]';
-  private dataSource: AnswerReport[];
-  private campagne: string;
-  private campagneID: number;
-  private participantID: number;
-  private routeSub: Subscription;
+  dataSource: AnswerReport[];
+  campagne: string;
+  campagneID: number;
+  participantID: number;
+  routeSub: Subscription;
 
-  constructor(private campagneService: CampagneService, private route: ActivatedRoute) {
+  constructor(private campagneService: CampaignService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {

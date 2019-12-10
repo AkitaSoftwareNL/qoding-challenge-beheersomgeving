@@ -2,26 +2,26 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { RapportDataSource } from './rapport-datasource';
-import {Campagne} from '../class/campagne';
-import {CampagneService} from '../campagne.service';
+import { ReportDatasource } from './report-datasource';
+import {Campaign} from '../class/campaign';
+import {CampaignService} from '../campaign.service';
 
 @Component({
   selector: 'app-rapport',
-  templateUrl: './rapport.component.html',
-  styleUrls: ['./rapport.component.css']
+  templateUrl: './report.component.html',
+  styleUrls: ['./report.component.css']
 })
-export class RapportComponent implements AfterViewInit, OnInit {
+export class ReportComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<Campagne>;
-  dataSource: RapportDataSource;
+  @ViewChild(MatTable, {static: false}) table: MatTable<Campaign>;
+  dataSource: ReportDatasource;
   title = 'Rapportage';
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'campagne', 'datum', 'status'];
 
-  constructor(private campagneService: CampagneService) {
+  constructor(private campaignService: CampaignService) {
     this.getCampagnes();
   }
 
@@ -29,9 +29,9 @@ export class RapportComponent implements AfterViewInit, OnInit {
   }
 
   getCampagnes(): void {
-    this.campagneService.getRapportCampagnes()
+    this.campaignService.getRapportCampagnes()
       .subscribe(campagne => {
-        this.dataSource = new RapportDataSource(campagne);
+        this.dataSource = new ReportDatasource(campagne);
       });
   }
 

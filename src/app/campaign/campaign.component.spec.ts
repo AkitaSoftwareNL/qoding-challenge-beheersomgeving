@@ -4,28 +4,33 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
-import { RapportParticipantsComponent } from './rapport-participants.component';
+import { CampaignComponent } from './campaign.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
-describe('RapportParticipantsComponent', () => {
-  let component: RapportParticipantsComponent;
-  let fixture: ComponentFixture<RapportParticipantsComponent>;
+describe('CampagneComponent', () => {
+  let component: CampaignComponent;
+  let fixture: ComponentFixture<CampaignComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RapportParticipantsComponent ],
+      declarations: [ CampaignComponent ],
       imports: [
         NoopAnimationsModule,
         MatPaginatorModule,
         MatSortModule,
         MatTableModule,
+        HttpClientModule,
+        ToastrModule.forRoot()
       ],
+      providers: [HttpClient, ToastrService],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RapportParticipantsComponent);
+    fixture = TestBed.createComponent(CampaignComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

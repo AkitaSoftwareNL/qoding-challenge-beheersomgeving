@@ -1,6 +1,6 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { QuestionJudgingComponent } from './question-judging.component';
+// import { QuestionReviewComponent } from './question-judging.component';
 // import { MatTableModule } from '@angular/material/table';
 // import { MatPaginatorModule } from '@angular/material/paginator';
 // import { MatSortModule } from '@angular/material/sort';
@@ -10,13 +10,13 @@
 // import { HttpClientModule } from '@angular/common/http';
 // import { ToastrModule, ToastrService } from 'ngx-toastr';
 
-// describe('QuestionJudgingComponent', () => {
-//   let component: QuestionJudgingComponent;
-//   let fixture: ComponentFixture<QuestionJudgingComponent>;
+// describe('QuestionReviewComponent', () => {
+//   let component: QuestionReviewComponent;
+//   let fixture: ComponentFixture<QuestionReviewComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [QuestionJudgingComponent],
+//       declarations: [QuestionReviewComponent],
 //       imports: [
 //         MatIconModule,
 //         MatTableModule,
@@ -38,7 +38,7 @@
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(QuestionJudgingComponent);
+//     fixture = TestBed.createComponent(QuestionReviewComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

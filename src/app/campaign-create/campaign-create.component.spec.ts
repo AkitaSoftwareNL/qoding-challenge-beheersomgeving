@@ -7,19 +7,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
-import { CampagneCreateComponent } from './campagne-create.component';
+import { CampaignCreateComponent } from './campaign-create.component';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {Campagne} from '../class/campagne';
+import {Campaign} from '../class/campaign';
 
 describe('CampagneCreateComponent', () => {
-  let component: CampagneCreateComponent;
-  let fixture: ComponentFixture<CampagneCreateComponent>;
+  let component: CampaignCreateComponent;
+  let fixture: ComponentFixture<CampaignCreateComponent>;
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CampagneCreateComponent ],
+      declarations: [ CampaignCreateComponent ],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -38,7 +38,7 @@ describe('CampagneCreateComponent', () => {
     }).compileComponents();
   }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(CampagneCreateComponent);
+    fixture = TestBed.createComponent(CampaignCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -47,7 +47,7 @@ describe('CampagneCreateComponent', () => {
   });
 
   it('should call add on submit',  () => {
-    const campagne = new Campagne();
+    const campagne = new Campaign();
     campagne.name = 'test1';
     spyOn(component, 'add');
     component.onSubmit(campagne);

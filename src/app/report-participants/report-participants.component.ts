@@ -2,30 +2,30 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { RapportParticipantsDataSource } from './rapport-participants-datasource';
-import {CampagneService} from '../campagne.service';
+import { ReportParticipantsDatasource } from './report-participants-datasource';
+import {CampaignService} from '../campaign.service';
 import {Participant} from '../class/participant';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-rapport-participants',
-  templateUrl: './rapport-participants.component.html',
-  styleUrls: ['./rapport-participants.component.css']
+  templateUrl: './report-participants.component.html',
+  styleUrls: ['./report-participants.component.css']
 })
-export class RapportParticipantsComponent implements AfterViewInit, OnInit {
+export class ReportParticipantsComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Participant>;
-  dataSource: RapportParticipantsDataSource;
+  dataSource: ReportParticipantsDatasource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['rank', 'name', 'answer', 'time'];
   title = '[CampagneNaam]';
-  private routeSub: Subscription;
-  private campagneID: number;
+  routeSub: Subscription;
+  campagneID: number;
 
-  constructor(private campagneService: CampagneService, private route: ActivatedRoute) {
+  constructor(private campagneService: CampaignService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -38,7 +38,7 @@ export class RapportParticipantsComponent implements AfterViewInit, OnInit {
   getParticipants(campagneID: number): void {
     this.campagneService.getParticipantsCampaign(campagneID)
       .subscribe(participant => {
-        this.dataSource = new RapportParticipantsDataSource(participant.participants);
+        this.dataSource = new ReportParticipantsDatasource(participant.participants);
         this.title = participant.campaignName;
       });
   }

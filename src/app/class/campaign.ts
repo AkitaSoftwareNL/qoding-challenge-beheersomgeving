@@ -1,4 +1,4 @@
-export class Campagne {
+export class Campaign {
   id: number;
   name: string;
   amountOfQuestions: bigint;

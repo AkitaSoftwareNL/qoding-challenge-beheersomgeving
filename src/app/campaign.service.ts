@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Campagne} from './class/campagne';
+import {Campaign} from './class/campaign';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
@@ -10,7 +10,7 @@ import {AnswerListReport} from './class/answerListReport';
 @Injectable({
   providedIn: 'root'
 })
-export class CampagneService {
+export class CampaignService {
   private campagneGetURL = 'http://localhost:8080/campaign';
   private campagneCreateURL = 'http://localhost:8080/campaign/create';
   private campagneRapportGetURL = 'http://localhost:8080/report/';
@@ -20,10 +20,10 @@ export class CampagneService {
 
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
-  getCampagnes(): Observable<Campagne[]> {
-    return this.http.get<Campagne[]>(this.campagneGetURL)
+  getCampaign(): Observable<Campaign[]> {
+    return this.http.get<Campaign[]>(this.campagneGetURL)
       .pipe(
-        catchError(this.handleError<Campagne[]>('ophalen van campagnes voor overzicht pagina.', []))
+        catchError(this.handleError<Campaign[]>('ophalen van campagnes voor overzicht pagina.', []))
       );
   }
 
@@ -42,17 +42,17 @@ export class CampagneService {
   }
 
   /** POST: add a new campagne to the server */
-  addCampagne(campagne: Campagne): Observable<Campagne> {
-    return this.http.post<Campagne>(this.campagneCreateURL, campagne, this.httpOptions)
+  addCampaign(campagne: Campaign): Observable<Campaign> {
+    return this.http.post<Campaign>(this.campagneCreateURL, campagne, this.httpOptions)
       .pipe(
-        tap((newCampagne: Campagne) => alert(`Campagne Toegevoegd w/ name=${campagne.name}`)),
-        catchError(this.handleError<Campagne>('toevoegen van een Campagne.')));
+        tap((newCampagne: Campaign) => alert(`Campagne Toegevoegd w/ name=${campagne.name}`)),
+        catchError(this.handleError<Campaign>('toevoegen van een Campaign.')));
   }
 
-  getRapportCampagnes(): Observable<Campagne[]> {
-    return this.http.get<Campagne[]>(this.campagneRapportGetURL)
+  getRapportCampagnes(): Observable<Campaign[]> {
+    return this.http.get<Campaign[]>(this.campagneRapportGetURL)
       .pipe(
-        catchError(this.handleError<Campagne[]>('ophalen van Campagnes voor Rapportage.', []))
+        catchError(this.handleError<Campaign[]>('ophalen van Campagnes voor Rapportage.', []))
       );
   }
 
