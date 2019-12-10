@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {Vraag} from '../Vraag';
+import {Vraag} from '../class/Vraag';
 
 
 /**
@@ -11,7 +11,7 @@ import {Vraag} from '../Vraag';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class VragenDataSource extends DataSource<Vraag> {
+export class QuestionDatasource extends DataSource<Vraag> {
   data: Vraag[];
   paginator: MatPaginator;
   sort: MatSort;
@@ -19,7 +19,6 @@ export class VragenDataSource extends DataSource<Vraag> {
   constructor(vragen: Vraag[]) {
     super();
     this.data = vragen;
-    console.log(this.data);
   }
 
   /**
@@ -68,10 +67,10 @@ export class VragenDataSource extends DataSource<Vraag> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'Vraag': return compare(a.question, b.question, isAsc);
+        case 'question': return compare(a.question, b.question, isAsc);
         case 'id': return compare(a.questionID, b.questionID, isAsc);
-        case 'Vraagtype': return compare(a.questionType,  b.questionType, isAsc);
-        case 'vraagcategory': return compare(a.categoryType,  b.categoryType, isAsc);
+        case 'type': return compare(a.questionType,  b.questionType, isAsc);
+        case 'category': return compare(a.categoryType,  b.categoryType, isAsc);
         default: return 0;
       }
     });

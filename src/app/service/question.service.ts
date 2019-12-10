@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
 import { Question } from '../class/question';
-import {Vraag} from '../Vraag';
+import {Vraag} from '../class/Vraag';
 import { GivenAnswer } from '../class/given-answer';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +18,14 @@ export class QuestionService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  constructor(private http: HttpClient, private toast: ToastrService) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   addQuestion(question: Question) {
     return this.http.post<Question>(this.questionCreate, question, this.httpOptions)
       .pipe(
-        tap((newQuestion: Question) => alert(`Vraag Toegevoegd`)),
+        tap((newQuestion: Question) => {
+          alert(`Vraag Toegevoegd`);
+        }),
         catchError(this.handleError<Question>()));
   }
 
@@ -36,7 +38,11 @@ export class QuestionService {
   }
 
   setAnswers(campagneID, state, answer: GivenAnswer) {
-    return this.http.post<GivenAnswer[]>('http://localhost:8080/answers/update', answer, this.httpOptions);
+    return this.http.post<GivenAnswer[]>(
+      'http://localhost:8080/campaign/' + campagneID + '/answers/' + state + '/update',
+      answer,
+      this.httpOptions
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

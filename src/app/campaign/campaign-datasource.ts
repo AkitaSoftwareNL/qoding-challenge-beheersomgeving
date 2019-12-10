@@ -65,7 +65,7 @@ export class CampaignDatasource extends DataSource<Campaign> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        // case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
     });

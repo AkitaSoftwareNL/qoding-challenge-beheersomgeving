@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Campaign} from './class/campaign';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Campaign} from '../class/campaign';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
-import {ParticipantList} from './class/participantList';
-import {AnswerListReport} from './class/answerListReport';
+import {ParticipantList} from '../class/participantList';
+import {AnswerListReport} from '../class/answerListReport';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class CampaignService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient, private toast: ToastrService) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getCampaign(): Observable<Campaign[]> {
     return this.http.get<Campaign[]>(this.campagneGetURL)
@@ -45,7 +45,10 @@ export class CampaignService {
   addCampaign(campagne: Campaign): Observable<Campaign> {
     return this.http.post<Campaign>(this.campagneCreateURL, campagne, this.httpOptions)
       .pipe(
-        tap((newCampagne: Campaign) => alert(`Campagne Toegevoegd w/ name=${campagne.name}`)),
+        tap((newCampagne: Campaign) => {
+          alert(`Campagne Toegevoegd w/ name=${campagne.name}`);
+          this.router.navigate(['/campagnes']);
+        }),
         catchError(this.handleError<Campaign>('toevoegen van een Campaign.')));
   }
 
