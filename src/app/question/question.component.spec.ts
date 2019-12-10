@@ -5,15 +5,15 @@
 // import { MatTableModule } from '@angular/material/table';
 // import { MatIconModule } from '@angular/material/icon';
 
-// import { VragenComponent } from './vragen.component';
+// import { QuestionComponent } from './vragen.component';
 
-// describe('VragenComponent', () => {
-//   let component: VragenComponent;
-//   let fixture: ComponentFixture<VragenComponent>;
+// describe('QuestionComponent', () => {
+//   let component: QuestionComponent;
+//   let fixture: ComponentFixture<QuestionComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [VragenComponent],
+//       declarations: [QuestionComponent],
 //       imports: [
 //         NoopAnimationsModule,
 //         MatPaginatorModule,
@@ -25,7 +25,7 @@
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(VragenComponent);
+//     fixture = TestBed.createComponent(QuestionComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

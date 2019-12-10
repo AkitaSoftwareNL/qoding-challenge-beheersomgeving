@@ -9,33 +9,33 @@
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="Vraag">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vraag</th>
+      <ng-container matColumnDef="question">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>QuestionOverview</th>
         <td mat-cell *matCellDef="let row">{{row.question}}</td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="Vraagtype">
+      <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Vraagtype</th>
         <td mat-cell *matCellDef="let row">{{row.questionType}}</td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="vraagcategory">
+      <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>vraagcategory</th>
         <td mat-cell *matCellDef="let row">{{row.categoryType}}</td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="Aanpassen">
+      <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Aanpassen</th>
         <td mat-cell *matCellDef="let row">Aanpassen</td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="Verwijderen">
+      <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Verwijderen</th>
-        <td mat-cell *matCellDef="let row"><a (click)="delete(row)" mat-mini-fab><mat-icon aria-hidden="false" aria-label="icon">delete</mat-icon></a></td>
+        <td mat-cell *matCellDef="let row"><a (click)="removeQuestion(row)" mat-mini-fab><mat-icon aria-hidden="false" aria-label="icon">delete</mat-icon></a></td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

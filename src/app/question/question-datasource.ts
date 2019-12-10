@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {Vraag} from '../Vraag';
+import {QuestionOverview} from '../class/question-overview';
 
 
 /**
@@ -11,15 +11,14 @@ import {Vraag} from '../Vraag';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class VragenDataSource extends DataSource<Vraag> {
-  data: Vraag[];
+export class QuestionDatasource extends DataSource<QuestionOverview> {
+  data: QuestionOverview[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(vragen: Vraag[]) {
+  constructor(questionOverviews: QuestionOverview[]) {
     super();
-    this.data = vragen;
-    console.log(this.data);
+    this.data = questionOverviews;
   }
 
   /**
@@ -27,7 +26,7 @@ export class VragenDataSource extends DataSource<Vraag> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Vraag[]> {
+  connect(): Observable<QuestionOverview[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -51,7 +50,7 @@ export class VragenDataSource extends DataSource<Vraag> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Vraag[]) {
+  private getPagedData(data: QuestionOverview[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -60,7 +59,7 @@ export class VragenDataSource extends DataSource<Vraag> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Vraag[]) {
+  private getSortedData(data: QuestionOverview[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -68,10 +67,10 @@ export class VragenDataSource extends DataSource<Vraag> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'Vraag': return compare(a.question, b.question, isAsc);
+        case 'question': return compare(a.question, b.question, isAsc);
         case 'id': return compare(a.questionID, b.questionID, isAsc);
-        case 'Vraagtype': return compare(a.questionType,  b.questionType, isAsc);
-        case 'vraagcategory': return compare(a.categoryType,  b.categoryType, isAsc);
+        case 'type': return compare(a.questionType,  b.questionType, isAsc);
+        case 'category': return compare(a.categoryType,  b.categoryType, isAsc);
         default: return 0;
       }
     });

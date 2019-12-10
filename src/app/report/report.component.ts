@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ReportDatasource } from './report-datasource';
 import {Campaign} from '../class/campaign';
-import {CampaignService} from '../campaign.service';
+import {CampaignService} from '../service/campaign.service';
 
 @Component({
   selector: 'app-rapport',

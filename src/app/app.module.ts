@@ -31,7 +31,7 @@ import { ReportParticipantsComponent } from './report-participants/report-partic
 import { ReportParticipantQuestionComponent } from './report-participant-question/report-participant-question.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
-import { VragenComponent } from './vragen/vragen.component';
+import { QuestionComponent } from './question/question.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionReviewComponent } from './question-review/question-review.component';
@@ -46,14 +46,14 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     CampaignComponent,
     CampaignComponent,
     CampaignCreateComponent,
-    VragenComponent,
+    QuestionComponent,
     OpenQuestionCreateComponent,
     QuestionCreateComponent,
     QuestionReviewComponent,
     ReportComponent,
     ReportParticipantsComponent,
     ReportParticipantQuestionComponent,
-    MultipleChoiceQuestionCreateComponent,
+    MultipleChoiceQuestionCreateComponent
   ],
   imports: [
     BrowserModule,

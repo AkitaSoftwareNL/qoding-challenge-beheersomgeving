@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Campaign } from '../class/campaign';
 import { QuestionService } from '../service/question.service';
@@ -19,7 +19,7 @@ export class QuestionReviewComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatTable, { static: false }) table: MatTable<GivenAnswer>;
   campaign: Campaign;
-  displayedColumns = ['vraag', 'antwoord', 'correct', 'in-correct'];
+  displayedColumns = ['question', 'answer', 'correct', 'in-correct'];
   dataSource: QuestionReviewDatasource;
   campaignID: string;
   constructor(
@@ -54,7 +54,7 @@ export class QuestionReviewComponent implements OnInit, AfterViewInit {
 
   sendAnwser(givenAnswer: GivenAnswer, state: number) {
     givenAnswer.stateId = state;
-    this.questionService.setAnswers(this.campaignID, 1, givenAnswer).subscribe(suc => {
+    this.questionService.setAnswers(this.campaignID, 1, givenAnswer).subscribe(() => {
       this.questionService.getAnswers(this.campaignID, 1).subscribe(succes => {
         this.dataSource = new QuestionReviewDatasource(succes);
         this.setTableData();
