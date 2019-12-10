@@ -64,6 +64,7 @@ import {MatSliderModule} from '@angular/material/slider';
     MatCheckboxModule,
     MatButtonModule,
     MatSidenavModule,
+    MatSliderModule,
     MatIconModule,
     MatListModule,
     MatGridListModule,
