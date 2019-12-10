@@ -18,7 +18,8 @@ describe('OpenQuestionCreateComponent', () => {
   let component: OpenQuestionCreateComponent;
   let fixture: ComponentFixture<OpenQuestionCreateComponent>;
   let debugElement: DebugElement;
-  let spy;
+  const spy = null;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -50,10 +51,10 @@ describe('OpenQuestionCreateComponent', () => {
 
   it('should emit a Question object', () => {
     component.question.subscribe(q => {
-      expect(q).toEqual(new Question(-1, 'open', 'JAVA', 'question', 'attachment', 0, '', []));
+      expect(q).toEqual(new Question(-1, 'question', 'Java', 'open', 'attachment', [], '', 0));
     });
 
-    let form = {
+    const form = {
       question: 'question',
       attachment: 'attachment',
     };

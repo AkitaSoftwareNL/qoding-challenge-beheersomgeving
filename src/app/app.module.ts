@@ -36,8 +36,8 @@ import { OpenQuestionCreateComponent } from './open-question-create/open-questio
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionReviewComponent } from './question-review/question-review.component';
 import { MultipleChoiceQuestionCreateComponent } from './multiple-choice-question-create/multiple-choice-question-create.component';
-import {MatCheckboxModule} from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -81,8 +81,7 @@ import {MatSliderModule} from '@angular/material/slider';
     HttpClientModule,
     ToastrModule.forRoot(),
     MatExpansionModule,
-    MatChipsModule,
-    MatSliderModule
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
