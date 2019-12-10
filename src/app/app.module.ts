@@ -34,6 +34,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { VragenComponent } from './vragen/vragen.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
+import { MultipleChoiceQuestionCreateComponent } from './multiple-choice-question-create/multiple-choice-question-create.component';
+import {MatCheckboxModule} from '@angular/material';
 import { QuestionJudgingComponent } from './question-judging/question-judging.component';
 import {MatSliderModule} from '@angular/material/slider';
 
@@ -47,6 +49,7 @@ import {MatSliderModule} from '@angular/material/slider';
     VragenComponent,
     OpenQuestionCreateComponent,
     QuestionCreateComponent,
+    MultipleChoiceQuestionCreateComponent,
     QuestionJudgingComponent,
     RapportComponent,
     RapportParticipantsComponent,
@@ -58,6 +61,7 @@ import {MatSliderModule} from '@angular/material/slider';
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
+    MatCheckboxModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,

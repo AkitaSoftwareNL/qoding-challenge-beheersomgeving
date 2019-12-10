@@ -1,11 +1,14 @@
 <div class="grid-container">
   <div>
-    <button class="type-button" mat-button [matMenuTriggerFor]="menu">Type Vragen</button>
+    <button class="type-button" mat-button [matMenuTriggerFor]="menu">Selecteer type vraag</button>
     <mat-menu #menu="matMenu">
-      <button (click)="setType('open')" mat-menu-item>Open vragen</button>
+      <button (click)="setType('open')" mat-menu-item>Openvragen</button>
+      <button (click)="setType('meerkeuze')" mat-menu-item>Meerkeuzevragen</button>
     </mat-menu>
 
   </div>
   <app-open-question-create (question)="onAddQuestion($event)" *ngIf="QuestionType == 'open'">
   </app-open-question-create>
+  <app-multiple-choice-question-create (question)="onAddQuestion($event)" *ngIf="QuestionType == 'meerkeuze'">
+  </app-multiple-choice-question-create>
 </div>

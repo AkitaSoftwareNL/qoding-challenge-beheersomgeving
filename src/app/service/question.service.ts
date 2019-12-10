@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Question } from '../class/question';
+import {Vraag} from '../Vraag';
 import { GivenAnswer } from '../class/given-answer';
 
 @Injectable({
@@ -12,6 +13,8 @@ import { GivenAnswer } from '../class/given-answer';
 
 export class QuestionService {
   private questionCreate = 'http://localhost:8080/questions/create';
+  private getQuestionURL = 'http://localhost:8080/questions';
+  private removeQuestionURL = 'http://localhost:8080/questions/delete';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -42,6 +45,20 @@ export class QuestionService {
       alert('Vraag kon niet worden gemaakt');
       return of(result as T);
     };
+  }
+
+  getQuestions(): Observable<Vraag[]> {
+    return this.http.get<Vraag[]> (this.getQuestionURL )
+      .pipe(
+        catchError(this.handleError<Vraag[]>('getQuestions', []))
+      );
+  }
+
+  removeQuestion(vraag: Vraag): Observable<Vraag> {
+    return this.http.post<Vraag>(this.removeQuestionURL + '/' + vraag.questionID, '')
+      .pipe(
+        tap( (newVraag: Vraag) => alert('Vraag verwijderd w/ id ' + vraag.questionID)),
+        catchError(this.handleError<Vraag>('Vraag verwijderd')));
   }
 
 }
