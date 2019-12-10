@@ -35,9 +35,9 @@ import { QuestionComponent } from './question/question.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionReviewComponent } from './question-review/question-review.component';
-import {MatCheckboxModule} from '@angular/material';
+import { MultipleChoiceQuestionCreateComponent } from './multiple-choice-question-create/multiple-choice-question-create.component';
 import {MatSliderModule} from '@angular/material/slider';
-import {MultipleChoiceQuestionCreateComponent} from './multiple-choice-question-create/multiple-choice-question-create.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -81,8 +81,7 @@ import {MultipleChoiceQuestionCreateComponent} from './multiple-choice-question-
     HttpClientModule,
     ToastrModule.forRoot(),
     MatExpansionModule,
-    MatChipsModule,
-    MatSliderModule
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

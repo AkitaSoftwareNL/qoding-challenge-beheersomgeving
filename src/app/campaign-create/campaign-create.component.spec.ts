@@ -8,10 +8,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
 import { CampaignCreateComponent } from './campaign-create.component';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Campaign } from '../class/campaign';
-import { MatSliderModule } from '@angular/material';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {Campaign} from '../class/campaign';
+import {MatSliderModule} from '@angular/material';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 describe('CampagneCreateComponent', () => {
   let component: CampaignCreateComponent;
@@ -22,6 +23,8 @@ describe('CampagneCreateComponent', () => {
     TestBed.configureTestingModule({
       declarations: [CampaignCreateComponent],
       imports: [
+        MatSliderModule,
+        MatCheckboxModule,
         NoopAnimationsModule,
         ReactiveFormsModule,
         MatButtonModule,

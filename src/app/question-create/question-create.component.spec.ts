@@ -7,8 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
-import { MatMenuModule } from "@angular/material/menu";
-import { OpenQuestionCreateComponent } from "../open-question-create/open-question-create.component";
+import { MatMenuModule } from '@angular/material/menu';
+import { OpenQuestionCreateComponent } from '../open-question-create/open-question-create.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,8 +17,9 @@ import { QuestionService } from '../service/question.service';
 import { DebugElement } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Question } from '../class/question';
-import { MatSliderModule, MatCheckboxModule } from '@angular/material';
-import { MultipleChoiceQuestionCreateComponent } from '../multiple-choice-question-create/multiple-choice-question-create.component';
+import {MultipleChoiceQuestionCreateComponent} from '../multiple-choice-question-create/multiple-choice-question-create.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material';
 
 describe('QuestionCreateComponent', () => {
   let component: QuestionCreateComponent;
@@ -29,6 +30,7 @@ describe('QuestionCreateComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        MatCheckboxModule,
         MatMenuModule,
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -45,7 +47,8 @@ describe('QuestionCreateComponent', () => {
       declarations: [
         MultipleChoiceQuestionCreateComponent,
         OpenQuestionCreateComponent,
-        QuestionCreateComponent
+        QuestionCreateComponent,
+        MultipleChoiceQuestionCreateComponent
       ]
     })
       .compileComponents();
@@ -71,7 +74,7 @@ describe('QuestionCreateComponent', () => {
   });
 
   it('should call QuestionService', () => {
-    component.onAddQuestion(new Question(-1, 'type', 'category', 'question', 'attachment', [], 'given answer', 0));
+    component.onAddQuestion(new Question(-1, 'question', 'category', 'open', 'attachment', [], 'given answer', 1));
     expect(spy).toHaveBeenCalled();
   });
 });
