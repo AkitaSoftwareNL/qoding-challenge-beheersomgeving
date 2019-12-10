@@ -18,7 +18,6 @@ describe('OpenQuestionCreateComponent', () => {
   let component: OpenQuestionCreateComponent;
   let fixture: ComponentFixture<OpenQuestionCreateComponent>;
   let debugElement: DebugElement;
-  const spy = null;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -58,8 +57,6 @@ describe('OpenQuestionCreateComponent', () => {
       question: 'question',
       attachment: 'attachment',
     };
-
-    console.log(form);
 
     component.onSubmit(form);
 
