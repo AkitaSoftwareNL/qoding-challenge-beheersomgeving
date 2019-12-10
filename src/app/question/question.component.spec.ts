@@ -5,25 +5,24 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 
-import { VragenComponent } from './vragen.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { VragenDataSource } from './vragen-datasource';
-import { Vraag } from '../Vraag';
 import { Observable } from 'rxjs';
 import { QuestionService } from '../service/question.service';
 import { DebugElement } from '@angular/core';
+import { QuestionComponent } from './question.component';
+import { QuestionDatasource } from './question-datasource';
 
 describe('VragenComponent', () => {
-  let component: VragenComponent;
-  let fixture: ComponentFixture<VragenComponent>;
+  let component: QuestionComponent;
+  let fixture: ComponentFixture<QuestionComponent>;
   let debugElement: DebugElement;
   let service: QuestionService;
   let spy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [VragenComponent],
+      declarations: [QuestionComponent],
       imports: [
         NoopAnimationsModule,
         MatPaginatorModule,
@@ -38,9 +37,9 @@ describe('VragenComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VragenComponent);
+    fixture = TestBed.createComponent(QuestionComponent);
     component = fixture.componentInstance;
-    component.dataSource = new VragenDataSource([]);
+    component.dataSource = new QuestionDatasource([]);
     debugElement = fixture.debugElement;
     service = debugElement.injector.get(QuestionService);
     spy = spyOn(service, 'getQuestions').and.returnValue(new Observable<Vraag[]>());
