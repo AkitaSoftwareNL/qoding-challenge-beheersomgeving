@@ -19,7 +19,6 @@ export class QuestionDatasource extends DataSource<Vraag> {
   constructor(vragen: Vraag[]) {
     super();
     this.data = vragen;
-    console.log(this.data);
   }
 
   /**
