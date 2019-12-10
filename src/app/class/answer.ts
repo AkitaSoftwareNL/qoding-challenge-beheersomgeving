@@ -1,8 +1,8 @@
 export class Answer {
   constructor(
-    public id: number,
-    public givenAnswer: string,
-    public isCorrect: boolean,
+    // public id: number,
+    public possibleAnswer: string,
+    public isCorrect: number,
   ) { }
 
 }

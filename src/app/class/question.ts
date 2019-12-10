@@ -3,12 +3,13 @@ import { Answer } from './answer';
 export class Question {
   constructor(
     public questionID: number,
-    public questionType: string,
     public question: string,
+    public categoryType: string,
+    public questionType: string,
     public attachment: string,
-    public stateID: number,
+    public possibleAnswers: Answer[],
     public givenAnswer: string,
-    public possibleAnswers: Answer[]
+    public stateID: number
   ) { }
 
 }

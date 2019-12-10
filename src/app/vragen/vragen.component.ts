@@ -2,9 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import {VragenService} from '../vragen.service';
 import {Vraag} from '../Vraag';
 import {VragenDataSource} from './vragen-datasource';
+import {QuestionService} from '../service/question.service';
 
 @Component({
   selector: 'app-vragen',
@@ -22,7 +22,7 @@ export class VragenComponent implements AfterViewInit, OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'Vraag', 'Vraagtype', 'vraagcategory', 'Aanpassen', 'Verwijderen'];
 
-  constructor(private vragenService: VragenService) {
+  constructor(private vragenService: QuestionService) {
     this.getVragen();
   }
 

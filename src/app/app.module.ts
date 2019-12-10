@@ -29,6 +29,8 @@ import {ToastrModule} from 'ngx-toastr';
 import { VragenComponent } from './vragen/vragen.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
+import { MultipleChoiceQuestionCreateComponent } from './multiple-choice-question-create/multiple-choice-question-create.component';
+import {MatCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { QuestionCreateComponent } from './question-create/question-create.compo
     VragenComponent,
     OpenQuestionCreateComponent,
     QuestionCreateComponent,
+    MultipleChoiceQuestionCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { QuestionCreateComponent } from './question-create/question-create.compo
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
+    MatCheckboxModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
