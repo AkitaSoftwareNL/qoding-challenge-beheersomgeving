@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ReportParticipantsDatasource } from './report-participants-datasource';
-import {CampaignService} from '../service/campaign.service';
+import {CampaignService} from '../campaign.service';
 import {Participant} from '../class/participant';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';

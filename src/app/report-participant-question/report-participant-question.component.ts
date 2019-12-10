@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CampaignService} from '../service/campaign.service';
+import {CampaignService} from '../campaign.service';
 import {AnswerReport} from '../class/answerReport';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';

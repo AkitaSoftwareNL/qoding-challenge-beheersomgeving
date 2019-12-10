@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { CampaignDatasource } from './campaign-datasource';
 import { Campaign } from '../class/campaign';
-import { CampaignService } from '../service/campaign.service';
+import { CampaignService } from '../campaign.service';
 
 @Component({
   selector: 'app-campagne',

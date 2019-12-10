@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {CampaignService} from '../service/campaign.service';
+import {CampaignService} from '../campaign.service';
 import {Campaign} from '../class/campaign';
-import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-campagne-create',
@@ -17,7 +17,7 @@ export class CampaignCreateComponent {
 
   title = 'Campagne aanmaken';
 
-  constructor(private fb: FormBuilder, private campaignService: CampaignService) {}
+  constructor(private toast: ToastrService, private fb: FormBuilder, private campaignService: CampaignService) {}
 
   onSubmit(info: Campaign) {
     this.add(info);

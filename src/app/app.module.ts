@@ -31,13 +31,13 @@ import { ReportParticipantsComponent } from './report-participants/report-partic
 import { ReportParticipantQuestionComponent } from './report-participant-question/report-participant-question.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
-import { QuestionComponent } from './question/question.component';
+import { VragenComponent } from './vragen/vragen.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionReviewComponent } from './question-review/question-review.component';
+import { MultipleChoiceQuestionCreateComponent } from './multiple-choice-question-create/multiple-choice-question-create.component';
 import {MatCheckboxModule} from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
-import {MultipleChoiceQuestionCreateComponent} from './multiple-choice-question-create/multiple-choice-question-create.component';
 
 @NgModule({
   declarations: [
@@ -46,14 +46,14 @@ import {MultipleChoiceQuestionCreateComponent} from './multiple-choice-question-
     CampaignComponent,
     CampaignComponent,
     CampaignCreateComponent,
-    QuestionComponent,
+    VragenComponent,
     OpenQuestionCreateComponent,
     QuestionCreateComponent,
     QuestionReviewComponent,
     ReportComponent,
     ReportParticipantsComponent,
     ReportParticipantQuestionComponent,
-    MultipleChoiceQuestionCreateComponent
+    MultipleChoiceQuestionCreateComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,10 +4,10 @@ import { CampaignService } from './campaign.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
-import {Campaign} from '../class/campaign';
+import {Campaign} from './class/campaign';
 import {Observable} from 'rxjs';
-import {AnswerListReport} from '../class/answerListReport';
-import {ParticipantList} from '../class/participantList';
+import {AnswerListReport} from './class/answerListReport';
+import {ParticipantList} from './class/participantList';
 
 describe('CampagneService', () => {
   beforeEach(() => TestBed.configureTestingModule({

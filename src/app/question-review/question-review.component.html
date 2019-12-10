@@ -2,12 +2,12 @@
   <!-- <h1 class="mat-h1">{{campagne.name}}</h1> -->
   <div class="mat-elevation-z8">
     <table mat-table class="full-width-table" matSort aria-label="Elements">
-      <ng-container matColumnDef="question">
+      <ng-container matColumnDef="vraag">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Vraag</th>
         <td mat-cell *matCellDef="let row">{{row.question}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="answer">
+      <ng-container matColumnDef="antwoord">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Gegeven Antwoord</th>
         <td mat-cell *matCellDef="let row">{{row.givenAnswer}}</td>
       </ng-container>
