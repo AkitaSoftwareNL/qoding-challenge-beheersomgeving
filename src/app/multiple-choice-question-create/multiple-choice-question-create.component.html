@@ -1,4 +1,4 @@
-<div class="grid-container">
+<div class="">
   <form [formGroup]="questionForm" novalidate (ngSubmit)="onSubmit(questionForm.value)">
     <mat-card class="shipping-card">
       <mat-card-header>
@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Vraag" formControlName="question">
+              <input matInput placeholder="QuestionOverview" formControlName="question">
               <mat-error *ngIf="questionForm.controls['question'].hasError('required')">
                 Campagnenaam is <strong>vereist</strong>
               </mat-error>

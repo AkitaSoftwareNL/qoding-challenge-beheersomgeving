@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import {Vraag} from '../class/Vraag';
+import {QuestionOverview} from '../class/question-overview';
 import {QuestionDatasource} from './question-datasource';
 import {QuestionService} from '../service/question.service';
 
@@ -14,7 +14,7 @@ import {QuestionService} from '../service/question.service';
 export class QuestionComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<Vraag>;
+  @ViewChild(MatTable, {static: false}) table: MatTable<QuestionOverview>;
   dataSource: QuestionDatasource;
   title = 'Vragen overzicht';
 
@@ -35,7 +35,7 @@ export class QuestionComponent implements AfterViewInit, OnInit {
         this.setTableData();
     });
   }
-  removeQuestion(vraag: Vraag): void {
+  removeQuestion(vraag: QuestionOverview): void {
     if (confirm('Weet je zeker dat je de vraag "' + vraag.question + '" wilt verwijderen?')) {
       this.questionService.removeQuestion(vraag).subscribe(() => {
         this.getQuestions();

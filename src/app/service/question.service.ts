@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Question } from '../class/question';
-import {Vraag} from '../class/Vraag';
+import {QuestionOverview} from '../class/question-overview';
 import { GivenAnswer } from '../class/given-answer';
 import {Router} from '@angular/router';
 
@@ -48,23 +48,23 @@ export class QuestionService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
-      alert('Vraag kon niet worden gemaakt');
+      alert('QuestionOverview kon niet worden gemaakt');
       return of(result as T);
     };
   }
 
-  getQuestions(): Observable<Vraag[]> {
-    return this.http.get<Vraag[]> (this.getQuestionURL )
+  getQuestions(): Observable<QuestionOverview[]> {
+    return this.http.get<QuestionOverview[]> (this.getQuestionURL )
       .pipe(
-        catchError(this.handleError<Vraag[]>('getQuestions', []))
+        catchError(this.handleError<QuestionOverview[]>('getQuestions', []))
       );
   }
 
-  removeQuestion(vraag: Vraag): Observable<Vraag> {
-    return this.http.post<Vraag>(this.removeQuestionURL + '/' + vraag.questionID, '')
+  removeQuestion(vraag: QuestionOverview): Observable<QuestionOverview> {
+    return this.http.post<QuestionOverview>(this.removeQuestionURL + '/' + vraag.questionID, '')
       .pipe(
-        tap( (newVraag: Vraag) => alert('Vraag verwijderd w/ id ' + vraag.questionID)),
-        catchError(this.handleError<Vraag>('Vraag verwijderd')));
+        tap( (newVraag: QuestionOverview) => alert('QuestionOverview verwijderd w/ id ' + vraag.questionID)),
+        catchError(this.handleError<QuestionOverview>('QuestionOverview verwijderd')));
   }
 
 }

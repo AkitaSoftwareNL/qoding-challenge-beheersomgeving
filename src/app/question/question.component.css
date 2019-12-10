@@ -2,10 +2,6 @@
   width: 100%;
 }
 
-.grid-container {
-  margin: 20px;
-}
-
 .dashboard-card {
   position: absolute;
   top: 15px;
