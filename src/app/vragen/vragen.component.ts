@@ -2,9 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import {Vraag} from '../Vraag';
-import {VragenDataSource} from './vragen-datasource';
-import {QuestionService} from '../service/question.service';
+import { Vraag } from '../Vraag';
+import { VragenDataSource } from './vragen-datasource';
+import { QuestionService } from '../service/question.service';
 
 @Component({
   selector: 'app-vragen',
@@ -12,9 +12,9 @@ import {QuestionService} from '../service/question.service';
   styleUrls: ['./vragen.component.css']
 })
 export class VragenComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<Vraag>;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatTable, { static: false }) table: MatTable<Vraag>;
   dataSource: VragenDataSource;
   title = 'Vragen overzicht';
   private vragen: Vraag[];
@@ -31,10 +31,11 @@ export class VragenComponent implements AfterViewInit, OnInit {
 
   getVragen(): void {
     this.vragenService.getQuestions()
-      .subscribe( vraag => {
+      .subscribe(vraag => {
         this.dataSource = new VragenDataSource(vraag);
-    });
+      });
   }
+
   delete(vraag: Vraag): void {
     if (confirm('Weet je zeker dat je de vraag "' + vraag.question + '" wilt verwijderen?')) {
       this.vragenService.removeQuestion(vraag).subscribe();

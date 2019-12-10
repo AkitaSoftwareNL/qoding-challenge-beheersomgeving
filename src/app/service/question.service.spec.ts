@@ -28,7 +28,7 @@ describe('Question Service', () => {
     const service: QuestionService = TestBed.get(QuestionService);
     const returnvalue = new Observable<Question>();
     spyOn(service, 'addQuestion').and.returnValue(returnvalue);
-    expect(service.addQuestion(new Question(-1, 'questionType', 'java', 'question', 'attachment', 0, '', []))).toBe(returnvalue);
+    expect(service.addQuestion(new Question(-1, 'questionType', 'java', 'question', 'attachment', [], '', -1))).toBe(returnvalue);
   });
 
   it('getAnswers() should return an observable', () => {

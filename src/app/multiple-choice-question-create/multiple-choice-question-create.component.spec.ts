@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MultipleChoiceQuestionCreateComponent } from './multiple-choice-question-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule, MatCardModule, MatFormFieldModule, MatCheckboxModule } from '@angular/material';
 
 describe('MultipleChoiceQuestionCreateComponent', () => {
   let component: MultipleChoiceQuestionCreateComponent;
@@ -8,9 +10,16 @@ describe('MultipleChoiceQuestionCreateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MultipleChoiceQuestionCreateComponent ]
+      imports: [
+        ReactiveFormsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatCheckboxModule,
+        MatIconModule
+      ],
+      declarations: [MultipleChoiceQuestionCreateComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

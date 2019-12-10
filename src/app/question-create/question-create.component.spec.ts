@@ -17,6 +17,8 @@ import { QuestionService } from '../service/question.service';
 import { DebugElement } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Question } from '../class/question';
+import { MatSliderModule, MatCheckboxModule } from '@angular/material';
+import { MultipleChoiceQuestionCreateComponent } from '../multiple-choice-question-create/multiple-choice-question-create.component';
 
 describe('QuestionCreateComponent', () => {
   let component: QuestionCreateComponent;
@@ -35,10 +37,13 @@ describe('QuestionCreateComponent', () => {
         MatInputModule,
         MatRadioModule,
         MatSelectModule,
+        MatSliderModule,
+        MatCheckboxModule,
         ToastrModule.forRoot(),
         HttpClientModule
       ],
       declarations: [
+        MultipleChoiceQuestionCreateComponent,
         OpenQuestionCreateComponent,
         QuestionCreateComponent
       ]
@@ -66,7 +71,7 @@ describe('QuestionCreateComponent', () => {
   });
 
   it('should call QuestionService', () => {
-    component.onAddQuestion(new Question(-1, 'type', 'category', 'question', 'attachment', -1, 'given answer', []));
+    component.onAddQuestion(new Question(-1, 'type', 'category', 'question', 'attachment', [], 'given answer', 0));
     expect(spy).toHaveBeenCalled();
   });
 });
