@@ -35,9 +35,9 @@ import { VragenComponent } from './vragen/vragen.component';
 import { OpenQuestionCreateComponent } from './open-question-create/open-question-create.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionReviewComponent } from './question-review/question-review.component';
-import { MultipleChoiceQuestionCreateComponent } from './multiple-choice-question-create/multiple-choice-question-create.component';
 import {MatCheckboxModule} from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
+import {MultipleChoiceQuestionCreateComponent} from './multiple-choice-question-create/multiple-choice-question-create.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import {MatSliderModule} from '@angular/material/slider';
     ReportComponent,
     ReportParticipantsComponent,
     ReportParticipantQuestionComponent,
-    MultipleChoiceQuestionCreateComponent,
+    MultipleChoiceQuestionCreateComponent
   ],
   imports: [
     BrowserModule,

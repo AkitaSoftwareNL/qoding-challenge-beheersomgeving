@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import {Vraag} from '../Vraag';
+import {Vraag} from '../class/Vraag';
 import {VragenDataSource} from './vragen-datasource';
 import {QuestionService} from '../service/question.service';
 
@@ -17,7 +17,6 @@ export class VragenComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable, {static: false}) table: MatTable<Vraag>;
   dataSource: VragenDataSource;
   title = 'Vragen overzicht';
-  private vragen: Vraag[];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'Vraag', 'Vraagtype', 'vraagcategory', 'Aanpassen', 'Verwijderen'];
@@ -38,7 +37,6 @@ export class VragenComponent implements AfterViewInit, OnInit {
   delete(vraag: Vraag): void {
     if (confirm('Weet je zeker dat je de vraag "' + vraag.question + '" wilt verwijderen?')) {
       this.vragenService.removeQuestion(vraag).subscribe();
-      window.location.reload();
     }
   }
 
