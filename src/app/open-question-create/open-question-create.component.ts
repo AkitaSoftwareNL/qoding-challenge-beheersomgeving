@@ -19,7 +19,7 @@ export class OpenQuestionCreateComponent {
   constructor(private fb: FormBuilder) { }
 
   onSubmit(form: any) {
-    let question = new Question(-1, 'open', 'JAVA', form.question, form.attachment, 0, '', []);
+    const question = new Question(-1, form.question, 'Java', 'open', form.attachment, [], '', 0);
     this.question.emit(question);
   }
 
