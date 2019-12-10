@@ -3,44 +3,52 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import {Vraag} from '../class/Vraag';
-import {VragenDataSource} from './vragen-datasource';
+import {QuestionDatasource} from './question-datasource';
 import {QuestionService} from '../service/question.service';
 
 @Component({
   selector: 'app-vragen',
-  templateUrl: './vragen.component.html',
-  styleUrls: ['./vragen.component.css']
+  templateUrl: './question.component.html',
+  styleUrls: ['./question.component.css']
 })
-export class VragenComponent implements AfterViewInit, OnInit {
+export class QuestionComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<Vraag>;
-  dataSource: VragenDataSource;
+  dataSource: QuestionDatasource;
   title = 'Vragen overzicht';
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'Vraag', 'Vraagtype', 'vraagcategory', 'Aanpassen', 'Verwijderen'];
+  displayedColumns = ['id', 'question', 'type', 'category', 'delete'];
 
-  constructor(private vragenService: QuestionService) {
-    this.getVragen();
+  constructor(private questionService: QuestionService) {
+    this.getQuestions();
   }
 
   ngOnInit() {
   }
 
-  getVragen(): void {
-    this.vragenService.getQuestions()
+  getQuestions(): void {
+    this.questionService.getQuestions()
       .subscribe( vraag => {
-        this.dataSource = new VragenDataSource(vraag);
+        this.dataSource = new QuestionDatasource(vraag);
+        this.setTableData();
     });
   }
-  delete(vraag: Vraag): void {
+  removeQuestion(vraag: Vraag): void {
     if (confirm('Weet je zeker dat je de vraag "' + vraag.question + '" wilt verwijderen?')) {
-      this.vragenService.removeQuestion(vraag).subscribe();
+      this.questionService.removeQuestion(vraag).subscribe(() => {
+        this.getQuestions();
+        }
+      );
     }
   }
 
   ngAfterViewInit() {
+    this.setTableData();
+  }
+
+  setTableData() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
