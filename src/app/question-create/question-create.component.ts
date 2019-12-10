@@ -16,16 +16,12 @@ export class QuestionCreateComponent {
 
   setType(type: string) {
     this.QuestionType = type;
-    console.log(type);
-
   }
 
   onAddQuestion(question: Question) {
-    console.log(question);
     if (question.question != null && question.question !== '') {
       this.questionService.addQuestion(question)
         .subscribe();
-
     }
   }
 

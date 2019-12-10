@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, Validators, Form } from '@angular/forms';
 import { Question } from '../class/question';
 
