@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { ReportParticipantsDatasource } from './report-participants-datasource';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTable} from '@angular/material/table';
+import {ReportParticipantsDatasource} from './report-participants-datasource';
 import {CampaignService} from '../service/campaign.service';
 import {Participant} from '../class/participant';
 import {ActivatedRoute} from '@angular/router';
@@ -39,8 +39,6 @@ export class ReportParticipantsComponent implements AfterViewInit, OnInit {
     this.campagneService.getParticipantsCampaign(campagneID)
       .subscribe(participant => {
         this.dataSource = new ReportParticipantsDatasource(participant.participants);
-        console.log(this.dataSource);
-
         this.title = participant.campaignName;
       });
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CampaignService} from '../service/campaign.service';
 import {AnswerReport} from '../class/answerReport';
 import {ActivatedRoute} from '@angular/router';
@@ -36,6 +36,15 @@ export class ReportParticipantQuestionComponent implements OnInit {
         this.title = question.firstname + ' ' + question.insertion + ' ' + question.lastname;
         this.campagne = question.campaignName;
       });
+  }
+  getState(state: number): string {
+    if (state === 1) {
+      return 'blue';
+    } else if (state === 2) {
+      return 'green';
+    } else if (state === 3) {
+      return 'red';
+    }
   }
 
 }
