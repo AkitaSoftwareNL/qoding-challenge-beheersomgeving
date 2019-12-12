@@ -25,6 +25,7 @@ export class QuestionService {
       .pipe(
         tap((newQuestion: Question) => {
           alert(`Vraag Toegevoegd`);
+          this.router.navigate(['/vragen']);
         }),
         catchError(this.handleError<Question>()));
   }
