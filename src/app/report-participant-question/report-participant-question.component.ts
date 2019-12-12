@@ -39,7 +39,7 @@ export class ReportParticipantQuestionComponent implements OnInit {
   }
   getState(state: number): string {
     if (state === 1) {
-      return 'blue';
+      return 'cornflowerblue';
     } else if (state === 2) {
       return 'green';
     } else if (state === 3) {
