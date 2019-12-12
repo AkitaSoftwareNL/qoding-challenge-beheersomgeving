@@ -23,3 +23,8 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+.text {
+  word-wrap: break-word;
+  max-width: 45vw;
+}
