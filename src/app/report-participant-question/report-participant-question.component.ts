@@ -38,12 +38,15 @@ export class ReportParticipantQuestionComponent implements OnInit {
       });
   }
   getState(state: number): string {
-    if (state === 1) {
-      return 'cornflowerblue';
-    } else if (state === 2) {
-      return 'green';
-    } else if (state === 3) {
-      return 'red';
+    switch (state) {
+      case 1:
+        return 'cornflowerblue';
+      case 2:
+        return 'green';
+      case 3:
+        return 'red';
+      default:
+        return 'black';
     }
   }
 
