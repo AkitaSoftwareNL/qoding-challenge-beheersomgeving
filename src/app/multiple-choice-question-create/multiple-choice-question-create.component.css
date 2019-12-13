@@ -49,6 +49,6 @@
   text-align: center;
 }
 
-mat-grid-list mat-grid-tile {
+mat-form-field row col{
   width: 10% !important;
 }

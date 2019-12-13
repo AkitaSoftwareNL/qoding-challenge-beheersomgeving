@@ -23,25 +23,21 @@ export class MultipleChoiceQuestionCreateComponent {
     answer_4: [null],
     answer_5: [null],
     answer_6: [null],
-    correct_1: [null],
-    correct_2: [null],
-    correct_3: [null],
-    correct_4: [null],
-    correct_5: [null],
-    correct_6: [null],
+    correctAnswer: [1, Validators.required],
   });
   constructor(private fb: FormBuilder) {
   }
+
   onSubmit(form: any) {
     let i = 1;
     while (i <= this.maxAmountOfQuestions.length) {
       if ( (this.questionForm.get('answer_' + i).value)) {
         this.possibleAnswerList.push(new Answer(this.questionForm.get('answer_' + i).value,
-          (this.questionForm.get('correct_' + i).value) ? 1 : 0 ));
+          (Number(this.questionForm.get('correctAnswer').value) === i) ? 1 : 0 ));
       }
       i++;
     }
-    if (this.possibleAnswerList.filter(value => value.isCorrect === 1).length > 0 && this.possibleAnswerList.length > 1) {
+    if (this.possibleAnswerList.filter(value => value.isCorrect === 1).length === 1 && this.possibleAnswerList.length > 1) {
       const question = new Question(-1, form.question, 'java', 'multiple', form.attachment, this.possibleAnswerList, '', 1);
       this.question.emit(question);
     } else {
