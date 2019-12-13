@@ -37,3 +37,9 @@
 mat-expansion-panel {
   margin-bottom: 10px;
 }
+
+.state {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}

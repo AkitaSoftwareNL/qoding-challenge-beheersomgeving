@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CampaignService} from '../service/campaign.service';
 import {AnswerReport} from '../class/answerReport';
 import {ActivatedRoute} from '@angular/router';
@@ -36,6 +36,18 @@ export class ReportParticipantQuestionComponent implements OnInit {
         this.title = question.firstname + ' ' + question.insertion + ' ' + question.lastname;
         this.campagne = question.campaignName;
       });
+  }
+  getState(state: number): string {
+    switch (state) {
+      case 1:
+        return 'cornflowerblue';
+      case 2:
+        return 'green';
+      case 3:
+        return 'red';
+      default:
+        return 'black';
+    }
   }
 
 }
