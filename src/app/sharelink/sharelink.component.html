@@ -1,10 +1,10 @@
 <mat-toolbar>
-  <span class = "title-center">{{campaign.name}}</span>
+  <span class = "center titleSize">{{campaign.name}}</span>
 </mat-toolbar>
 
 <!--Image for qr code-->
 
-<!--needs to be adjusted for true implenmentation-->
-<a href="{{getUrl()}}" routerLinkActive="active" >
-  <span class = "title-center">{{getUrl()}}</span>
+<a href="{{getUrl()}}" routerLinkActive="active" class = "center hrefSize">
+    {{getUrl()}}
+</a>
 

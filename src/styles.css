@@ -48,3 +48,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width-table {
   width: 100%;
 }
+
+:root {
+  --primary-color: #c23350;
+  --secondary-color: #111111;
+  --tertiary-color: #FFFFFF;
+  --primary-text-color: #FFFFFF;
+  --secondary-text-color: #FFFFFF;
+  --tertiary-text-color: #111111;
+}

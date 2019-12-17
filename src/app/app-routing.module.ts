@@ -8,7 +8,7 @@ import { ReportParticipantQuestionComponent } from './report-participant-questio
 import { QuestionComponent } from './question/question.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionReviewComponent } from './question-review/question-review.component';
-import { SharelinkComponent } from './sharelink/sharelink.component'
+import { SharelinkComponent } from './sharelink/sharelink.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/campagnes', pathMatch: 'full' },

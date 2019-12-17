@@ -3,8 +3,6 @@ import { CampaignService } from '../service/campaign.service';
 import { ActivatedRoute } from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Campaign} from '../class/campaign';
-import {constants} from 'zlib';
-import {Url} from 'url';
 
 @Component({
   selector: 'app-sharelink',

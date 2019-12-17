@@ -38,4 +38,8 @@ export class CampaignComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
+
+  goToLink(campaignId) {
+    window.open('share/' + campaignId, '_blank');
+  }
 }
