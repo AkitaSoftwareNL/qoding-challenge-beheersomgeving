@@ -38,6 +38,7 @@ import { QuestionReviewComponent } from './question-review/question-review.compo
 import { MultipleChoiceQuestionCreateComponent } from './multiple-choice-question-create/multiple-choice-question-create.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SharelinkComponent } from './sharelink/sharelink.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ReportComponent,
     ReportParticipantsComponent,
     ReportParticipantQuestionComponent,
-    MultipleChoiceQuestionCreateComponent
+    MultipleChoiceQuestionCreateComponent,
+    SharelinkComponent
   ],
   imports: [
     BrowserModule,

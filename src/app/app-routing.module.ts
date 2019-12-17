@@ -8,6 +8,7 @@ import { ReportParticipantQuestionComponent } from './report-participant-questio
 import { QuestionComponent } from './question/question.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
 import { QuestionReviewComponent } from './question-review/question-review.component';
+import { SharelinkComponent } from './sharelink/sharelink.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/campagnes', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'rapportage/:campaignID', component: ReportParticipantsComponent },
   { path: 'rapportage/:campaignID/:participantID', component: ReportParticipantQuestionComponent },
   { path: 'judge/:campaignID', component: QuestionReviewComponent },
+  { path: 'share/:campaignID', component: SharelinkComponent },
 ];
 
 @NgModule({
