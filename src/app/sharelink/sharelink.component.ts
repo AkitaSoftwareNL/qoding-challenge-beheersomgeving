@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CampaignService } from '../service/campaign.service';
 import { ActivatedRoute } from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {Campaign} from '../class/campaign';
-import {CampaignDatasource} from '../campaign/campaign-datasource';
-import {toNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_version';
+import {constants} from 'zlib';
+import {Url} from 'url';
 
 @Component({
   selector: 'app-sharelink',
@@ -12,12 +12,11 @@ import {toNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_versio
   styleUrls: ['./sharelink.component.css']
 })
 export class SharelinkComponent implements OnInit {
-
+  Url = 'http://localhost:4201/login/';
   campaign: Campaign;
   campaigns: any[] = [];
   campaignID: number;
   routeSub: Subscription;
-  private dataSource: CampaignDatasource;
 
   constructor(private route: ActivatedRoute, private campaignService: CampaignService) { }
 
@@ -39,4 +38,7 @@ export class SharelinkComponent implements OnInit {
     });
   }
 
+  getUrl(): string {
+    return this.Url + this.campaignID;
+  }
 }
