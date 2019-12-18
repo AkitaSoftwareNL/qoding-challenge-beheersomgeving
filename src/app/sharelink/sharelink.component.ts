@@ -10,7 +10,7 @@ import {Campaign} from '../class/campaign';
   styleUrls: ['./sharelink.component.css']
 })
 export class SharelinkComponent implements OnInit {
-  Url = 'http://localhost:4201/login/';
+  url = 'http://localhost:4201/login/';
   campaign: Campaign;
   campaigns: any[] = [];
   campaignID: number;
@@ -27,16 +27,16 @@ export class SharelinkComponent implements OnInit {
   }
 
   getCampaign(): void {
-    this.campaignService.getCampaign().subscribe(value => {
-      this.campaigns = value;
+    this.campaignService.getCampaign().subscribe(campaign => {
+      this.campaigns = campaign;
       console.log(this.campaigns);
-      this.campaign = this.campaigns.filter(value1 => {
-        return value1.id === +this.campaignID;
+      this.campaign = this.campaigns.filter(filterdCampaign => {
+        return filterdCampaign.id === +this.campaignID;
       })[0];
     });
   }
 
   getUrl(): string {
-    return this.Url + this.campaignID;
+    return this.url + this.campaignID;
   }
 }

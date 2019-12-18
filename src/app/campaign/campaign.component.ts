@@ -16,7 +16,7 @@ export class CampaignComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatTable, { static: false }) table: MatTable<Campaign>;
   dataSource: CampaignDatasource;
-  displayedColumns = ['id', 'name', 'review', 'share'];
+  displayedColumns = ['id', 'name', 'share', 'review'];
   title = 'Campagnes';
 
   constructor(private campaignService: CampaignService) {
