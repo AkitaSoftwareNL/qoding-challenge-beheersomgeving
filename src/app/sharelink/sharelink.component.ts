@@ -30,8 +30,8 @@ export class SharelinkComponent implements OnInit {
     this.campaignService.getCampaign().subscribe(campaign => {
       this.campaigns = campaign;
       console.log(this.campaigns);
-      this.campaign = this.campaigns.filter(filterdCampaign => {
-        return filterdCampaign.id === +this.campaignID;
+      this.campaign = this.campaigns.filter(filteredCampaign => {
+        return filteredCampaign.id === +this.campaignID;
       })[0];
     });
   }
