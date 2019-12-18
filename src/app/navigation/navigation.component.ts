@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import {Router} from '@angular/router';
+import {Component} from '@angular/core';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Observable} from 'rxjs';
+import {map, shareReplay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-navigation',
@@ -18,6 +17,6 @@ export class NavigationComponent {
     );
   title = 'Qoding Challenge - Beheer';
 
-  constructor(private breakpointObserver: BreakpointObserver, private route: Router) {}
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
 }
