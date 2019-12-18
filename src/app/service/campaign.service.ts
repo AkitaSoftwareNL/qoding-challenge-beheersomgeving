@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Campaign} from '../class/campaign';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
@@ -11,9 +11,10 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class CampaignService {
-  private campagneGetURL = 'http://localhost:8080/campaign';
-  private campagneCreateURL = 'http://localhost:8080/campaign/create';
-  private campagneRapportGetURL = 'http://localhost:8080/report/';
+  campagneGetURL = 'http://localhost:8080/campaign';
+  campagneCreateURL = 'http://localhost:8080/campaign/create';
+  campagneRapportGetURL = 'http://localhost:8080/report/';
+  countQuestionURL = 'http://localhost:8080/questions/count';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -70,6 +71,13 @@ export class CampaignService {
     return this.http.get<AnswerListReport>(this.campagneRapportGetURL + campagneID + '/' + participantID)
       .pipe(
         catchError(this.handleError<AnswerListReport>('ophalen van Antwoorden van Deelnemers in Campagnes voor Rapportage.', null))
+      );
+  }
+
+  getAmountOfQuestions(): Observable<number> {
+    return this.http.get<number>(this.countQuestionURL)
+      .pipe(
+        catchError(this.handleError<number>('ophalen van het aantal vragen', null))
       );
   }
 }

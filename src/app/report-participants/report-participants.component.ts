@@ -39,6 +39,7 @@ export class ReportParticipantsComponent implements AfterViewInit, OnInit {
     this.campagneService.getParticipantsCampaign(campagneID)
       .subscribe(participant => {
         this.dataSource = new ReportParticipantsDatasource(participant.participants);
+        console.log(this.dataSource);
         this.title = participant.campaignName;
       });
   }
