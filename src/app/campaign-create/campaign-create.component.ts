@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
 import {CampaignService} from '../service/campaign.service';
 import {Campaign} from '../class/campaign';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-campagne-create',
