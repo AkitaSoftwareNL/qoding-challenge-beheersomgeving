@@ -12,7 +12,7 @@ export class MultipleChoiceQuestionCreateComponent {
   @Output() question = new EventEmitter<Question>();
   title = 'Meerkeuzevraag aanmaken';
   private possibleAnswerList: Answer[] = [];
-  private maxAmountOfQuestions = Array(1, 2, 3, 4, 5, 6);
+  maxAmountOfQuestions = Array(1, 2, 3, 4, 5, 6);
 
   questionForm = this.fb.group({
     question: [null, Validators.required],
