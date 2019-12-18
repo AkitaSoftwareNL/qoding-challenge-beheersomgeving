@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+  --primary-color: #c23350;
+  --secondary-color: #111111;
+  --tertiary-color: #FFFFFF;
+  --primary-text-color: #FFFFFF;
+  --secondary-text-color: #FFFFFF;
+  --tertiary-text-color: #111111;
+}
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -48,3 +58,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width-table {
   width: 100%;
 }
+

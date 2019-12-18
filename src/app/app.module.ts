@@ -39,6 +39,7 @@ import {MultipleChoiceQuestionCreateComponent} from './multiple-choice-question-
 import {MatSliderModule} from '@angular/material/slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {RouterTestingModule} from '@angular/router/testing';
+import { SharelinkComponent } from './sharelink/sharelink.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {RouterTestingModule} from '@angular/router/testing';
     ReportComponent,
     ReportParticipantsComponent,
     ReportParticipantQuestionComponent,
-    MultipleChoiceQuestionCreateComponent
+    MultipleChoiceQuestionCreateComponent,
+    SharelinkComponent
   ],
   imports: [
     BrowserModule,

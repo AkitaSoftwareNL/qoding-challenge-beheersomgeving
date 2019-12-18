@@ -1,2 +1,3 @@
-<app-navigation></app-navigation>
+<app-navigation *ngIf="!this.route.url.includes('share')"></app-navigation>
+<router-outlet *ngIf="this.route.url.includes('share')"></router-outlet>
 
