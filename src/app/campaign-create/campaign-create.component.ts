@@ -8,14 +8,14 @@ import {Campaign} from '../class/campaign';
   templateUrl: './campaign-create.component.html',
   styleUrls: ['./campaign-create.component.css']
 })
-export class CampaignCreateComponent implements OnInit{
+export class CampaignCreateComponent implements OnInit {
   campagneForm = this.fb.group({
     name: [null, Validators.required],
     amountOfQuestions: [3, Validators.required],
   });
 
   title = 'Campagne aanmaken';
-  max: number;
+  max = 1;
   numberOfQuestions: number;
 
   constructor(private fb: FormBuilder, private campaignService: CampaignService) {}
@@ -38,8 +38,9 @@ export class CampaignCreateComponent implements OnInit{
   setSlider() {
     this.campaignService.getAmountOfQuestions().subscribe(amount => {
       this.numberOfQuestions = amount;
-      if (amount > 50) { this.max = 50; }
-      this.max = amount;
+      const maxSelectableAmount = 50;
+      if (amount > maxSelectableAmount) { this.max = maxSelectableAmount; } else if (amount < 0 ) { this.max = 1; }
+      if (amount != null ) { this.max = amount; }
     });
   }
 }
