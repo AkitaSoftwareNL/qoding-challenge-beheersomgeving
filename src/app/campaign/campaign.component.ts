@@ -16,7 +16,7 @@ export class CampaignComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatTable, { static: false }) table: MatTable<Campaign>;
   dataSource: CampaignDatasource;
-  displayedColumns = ['id', 'name', 'review'];
+  displayedColumns = ['id', 'name', 'share', 'review'];
   title = 'Campagnes';
 
   constructor(private campaignService: CampaignService) {
@@ -37,5 +37,9 @@ export class CampaignComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  goToLink(campaignId) {
+    window.open('share/' + campaignId, '_blank');
   }
 }

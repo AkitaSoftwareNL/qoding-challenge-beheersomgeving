@@ -1,0 +1,18 @@
+<div class="main">
+  <div class="row header">
+    <h1>{{campaign.name}}</h1>
+  </div>
+
+  <div class="row content">
+    <div class="centerbox">
+      <h1 class="text">Scan de QR-code en doe mee!</h1>
+      <ngx-qrcode qrc-version="8" qrc-class="qrcode-class" qrc-errorCorrectionLevel="H" [qrc-element-type]="url"
+        [qrc-value]="getUrl()"></ngx-qrcode>
+      <h1 class="text">
+        <a href="{{getUrl()}}" routerLinkActive="active" class="text">
+          {{getUrl()}}
+        </a>
+      </h1>
+    </div>
+  </div>
+</div>

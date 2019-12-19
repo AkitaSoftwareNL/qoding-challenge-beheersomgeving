@@ -8,6 +8,7 @@ import { CampaignComponent } from './campaign.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {Campaign} from '../class/campaign';
 
 describe('CampagneComponent', () => {
   let component: CampaignComponent;
@@ -34,4 +35,9 @@ describe('CampagneComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+  // TODO later time
+  // it('should be opened',  () => {
+  //   component.goToLink(1);
+  //   expect(this.router.remoteAddress.includes);
+  // });
 });

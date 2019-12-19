@@ -20,7 +20,7 @@ export class ReportParticipantsComponent implements AfterViewInit, OnInit {
   dataSource: ReportParticipantsDatasource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['rank', 'name', 'answer', 'time'];
+  displayedColumns = ['rank', 'name', 'answer'];
   title = '[CampagneNaam]';
   routeSub: Subscription;
   campagneID: number;
@@ -39,6 +39,7 @@ export class ReportParticipantsComponent implements AfterViewInit, OnInit {
     this.campagneService.getParticipantsCampaign(campagneID)
       .subscribe(participant => {
         this.dataSource = new ReportParticipantsDatasource(participant.participants);
+        console.log(this.dataSource);
         this.title = participant.campaignName;
       });
   }
