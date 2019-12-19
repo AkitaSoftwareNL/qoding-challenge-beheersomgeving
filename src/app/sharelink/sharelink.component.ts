@@ -10,7 +10,7 @@ import {Campaign} from '../class/campaign';
   styleUrls: ['./sharelink.component.css']
 })
 export class SharelinkComponent implements OnInit {
-  url = 'http://localhost:4201/login/';
+  url = 'http://localhost:4201/conference/';
   campaign: Campaign;
   campaigns: any[] = [];
   campaignID: number;
