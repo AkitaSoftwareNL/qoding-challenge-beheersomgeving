@@ -47,7 +47,7 @@ export class CampaignService {
     return this.http.post<Campaign>(this.campagneCreateURL, campagne, this.httpOptions)
       .pipe(
         tap((newCampagne: Campaign) => {
-          alert(`Campagne Toegevoegd w/ name=${campagne.name}`);
+          alert(`Campagne toegevoegd met de naam ${campagne.name}`);
           this.router.navigate(['/campagnes']);
         }),
         catchError(this.handleError<Campaign>('toevoegen van een Campaign.')));
