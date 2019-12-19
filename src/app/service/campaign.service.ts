@@ -6,6 +6,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {ParticipantList} from '../class/participantList';
 import {AnswerListReport} from '../class/answerListReport';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class CampaignService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private toast: ToastrService) { }
 
   getCampaign(): Observable<Campaign[]> {
     return this.http.get<Campaign[]>(this.campagneGetURL)
@@ -28,26 +29,19 @@ export class CampaignService {
       );
   }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      alert('Er is wat mis gegaan bij het ' + operation);
+      console.log(error);
+      this.toast.info('Er is wat mis gegaan bij het ' + operation);
       return of(result as T);
     };
   }
 
-  /** POST: add a new campagne to the server */
   addCampaign(campagne: Campaign): Observable<Campaign> {
     return this.http.post<Campaign>(this.campagneCreateURL, campagne, this.httpOptions)
       .pipe(
         tap((newCampagne: Campaign) => {
-          alert(`Campagne toegevoegd met de naam ${campagne.name}`);
+          this.toast.info(`Campagne toegevoegd met de naam ${campagne.name}`);
           this.router.navigate(['/campagnes']);
         }),
         catchError(this.handleError<Campaign>('toevoegen van een Campaign.')));

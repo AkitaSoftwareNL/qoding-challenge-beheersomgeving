@@ -6,6 +6,7 @@ import {Question} from '../class/question';
 import {QuestionOverview} from '../class/question-overview';
 import {GivenAnswer} from '../class/given-answer';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,13 @@ export class QuestionService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private toast: ToastrService) { }
 
   addQuestion(question: Question) {
     return this.http.post<Question>(this.questionCreate, question, this.httpOptions)
       .pipe(
         tap((newQuestion: Question) => {
-          alert(`Vraag Toegevoegd`);
+          this.toast.info(`Vraag Toegevoegd`);
           this.router.navigate(['/vragen']);
         }),
         catchError(this.handleError<Question>()));
@@ -49,7 +50,7 @@ export class QuestionService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
-      alert('Vraag kon niet worden gemaakt');
+      this.toast.info('Vraag kon niet worden gemaakt');
       return of(result as T);
     };
   }
@@ -64,7 +65,7 @@ export class QuestionService {
   removeQuestion(vraag: QuestionOverview): Observable<QuestionOverview> {
     return this.http.post<QuestionOverview>(this.removeQuestionURL + '/' + vraag.questionID, '')
       .pipe(
-        tap( (newVraag: QuestionOverview) => alert('Vraag verwijderd met id ' + vraag.questionID)),
+        tap( (newVraag: QuestionOverview) => this.toast.info('Vraag verwijderd met id ' + vraag.questionID)),
         catchError(this.handleError<QuestionOverview>('Vraag verwijderd')));
   }
 
