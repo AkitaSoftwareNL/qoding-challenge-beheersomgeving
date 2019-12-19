@@ -28,7 +28,7 @@ export class QuestionService {
           this.toast.info(`Vraag Toegevoegd`);
           this.router.navigate(['/vragen']);
         }),
-        catchError(this.handleError<Question>()));
+        catchError(this.handleError<Question>('toevoegen van een vraag.')));
   }
 
   getAnswers(campagneID, state) {
@@ -50,7 +50,7 @@ export class QuestionService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
-      this.toast.info('Vraag kon niet worden gemaakt');
+      this.toast.info('Er is iets mis gegaan met het' + operation);
       return of(result as T);
     };
   }
@@ -58,7 +58,7 @@ export class QuestionService {
   getQuestions(): Observable<QuestionOverview[]> {
     return this.http.get<QuestionOverview[]> (this.getQuestionURL )
       .pipe(
-        catchError(this.handleError<QuestionOverview[]>('getQuestions', []))
+        catchError(this.handleError<QuestionOverview[]>('ophalen van vragen.', []))
       );
   }
 
@@ -66,7 +66,7 @@ export class QuestionService {
     return this.http.post<QuestionOverview>(this.removeQuestionURL + '/' + vraag.questionID, '')
       .pipe(
         tap( (newVraag: QuestionOverview) => this.toast.info('Vraag verwijderd met id ' + vraag.questionID)),
-        catchError(this.handleError<QuestionOverview>('Vraag verwijderd')));
+        catchError(this.handleError<QuestionOverview>('verwijderen van een vraag')));
   }
 
 }
