@@ -38,8 +38,8 @@ import {QuestionReviewComponent} from './question-review/question-review.compone
 import {MultipleChoiceQuestionCreateComponent} from './multiple-choice-question-create/multiple-choice-question-create.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {RouterTestingModule} from '@angular/router/testing';
 import { SharelinkComponent } from './sharelink/sharelink.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -85,7 +85,7 @@ import { SharelinkComponent } from './sharelink/sharelink.component';
     ToastrModule.forRoot(),
     MatExpansionModule,
     MatChipsModule,
-    RouterTestingModule
+    NgxQRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
