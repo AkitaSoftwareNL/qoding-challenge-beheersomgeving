@@ -11,7 +11,7 @@ import {Campaign} from '../class/campaign';
 })
 export class SharelinkComponent implements OnInit {
   url = 'http://localhost:4201/conference/';
-  campaign: Campaign;
+  campaign: Campaign = new Campaign();
   campaigns: any[] = [];
   campaignID: number;
   routeSub: Subscription;
@@ -29,7 +29,6 @@ export class SharelinkComponent implements OnInit {
   getCampaign(): void {
     this.campaignService.getCampaign().subscribe(campaign => {
       this.campaigns = campaign;
-      console.log(this.campaigns);
       this.campaign = this.campaigns.filter(filteredCampaign => {
         return filteredCampaign.id === +this.campaignID;
       })[0];
