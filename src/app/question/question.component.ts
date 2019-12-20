@@ -11,7 +11,7 @@ import {QuestionService} from '../service/question.service';
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.css']
 })
-export class QuestionComponent implements AfterViewInit, OnInit {
+export class QuestionComponent implements AfterViewInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<QuestionOverview>;
@@ -23,9 +23,6 @@ export class QuestionComponent implements AfterViewInit, OnInit {
 
   constructor(private questionService: QuestionService) {
     this.getQuestions();
-  }
-
-  ngOnInit() {
   }
 
   getQuestions(): void {
