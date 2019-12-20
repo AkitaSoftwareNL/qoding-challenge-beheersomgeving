@@ -1,0 +1,45 @@
+.breadcrum {
+  font-size: small;
+}
+
+.breadcrum-selected {
+  color: #555555;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content {
+  width:100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rank {
+  max-height: 20px;
+  min-width: 30px;
+}
+
+.chip {
+  max-height: 20px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.left {
+  flex-grow: 100;
+}
+
+mat-expansion-panel {
+  margin-bottom: 10px;
+}
+
+.state {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}

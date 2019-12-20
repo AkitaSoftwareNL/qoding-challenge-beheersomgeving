@@ -1,0 +1,20 @@
+<div class="grid-container">
+  <h1 class="mat-h1">{{title}}</h1>
+  <p class="breadcrum"><a routerLink="/rapportage">Rapportage</a> / <a routerLink="/rapportage/{{campagneID}}">{{campagne}}</a> / <span class="bold breadcrum-selected">{{title}}</span></p>
+  <mat-expansion-panel class="content" *ngFor="let answer of dataSource; let i = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="bold rank"># {{i+1}} </span>&nbsp;<span class="state" [ngStyle]="{'background-color':getState(answer.state) }"></span>&nbsp;<span class="chip">{{answer.questionType | uppercase}}</span>
+      </mat-panel-title>
+      <mat-panel-description class="truncate left">
+        <span class="bold">Vraagstelling:</span>&nbsp;&nbsp;{{answer.question}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>
+    <span class="bold small-title">Gegeven antwoord:</span>
+      <br>
+      {{answer.givenAnswer}}
+    </p>
+
+  </mat-expansion-panel>
+</div>

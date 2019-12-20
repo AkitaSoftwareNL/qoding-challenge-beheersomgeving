@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { NavigationComponent } from './navigation.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -33,8 +34,4 @@ describe('NavigationComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // it('should compile', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });
