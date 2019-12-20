@@ -14,7 +14,7 @@ import { MatTable } from '@angular/material/table';
   styleUrls: ['./question-review.component.css']
 })
 
-export class QuestionReviewComponent implements OnInit, AfterViewInit {
+export class QuestionReviewComponent implements AfterViewInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatTable, { static: false }) table: MatTable<GivenAnswer>;
@@ -37,9 +37,6 @@ export class QuestionReviewComponent implements OnInit, AfterViewInit {
         });
       });
     });
-  }
-
-  ngOnInit() {
   }
 
   ngAfterViewInit() {

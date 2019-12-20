@@ -11,7 +11,7 @@ import { CampaignService } from '../service/campaign.service';
   templateUrl: './campaign.component.html',
   styleUrls: ['./campaign.component.css']
 })
-export class CampaignComponent implements AfterViewInit, OnInit {
+export class CampaignComponent implements AfterViewInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatTable, { static: false }) table: MatTable<Campaign>;
@@ -21,9 +21,6 @@ export class CampaignComponent implements AfterViewInit, OnInit {
 
   constructor(private campaignService: CampaignService) {
     this.getCampaign();
-  }
-
-  ngOnInit() {
   }
 
   getCampaign(): void {
