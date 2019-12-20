@@ -14,20 +14,8 @@
   color: white;
 }
 
-.rowheader{
-  -webkit-box-flex: 0;
-  flex: 0 1 auto;
-  background-color: var(--secondary-color);
-  color: white;
-  font-size: larger;
-  text-align: center;
-  padding: 1ex;
-  box-shadow: 0px 4px 4px black;
-}
-
 
 .main .row.header {
-  flex: 0 1 auto;
   background-color: var(--secondary-color);
   color: white;
   font-size: larger;
@@ -35,6 +23,7 @@
   padding: 1ex;
   box-shadow: 0px 4px 4px black;
   margin-bottom: 0.5em;
+  display: block;
 }
 
 .main .row.content {
