@@ -1,7 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">{{title}}</h1>
-  <p class="breadcrum"><a routerLink="/rapportage">Rapportage</a> / <span
-      class="bold breadcrum-selected">{{title}}</span></p>
+  <p class="breadcrum"><a routerLink="/rapportage">Rapportage</a> / <span class="bold breadcrum-selected">{{title}}</span></p>
   <div class="mat-elevation-z8">
     <table mat-table class="full-width-table" matSort aria-label="Elements">
       <!-- Id Column -->
@@ -18,25 +17,25 @@
               *ngIf="row.insertion != null">{{row.insertion}}</span>{{' '+ row.lastname}}</a></td>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- Email Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mailadres</th>
         <td mat-cell *matCellDef="let row">{{row.email}}</td>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- Phonenumber Column -->
       <ng-container matColumnDef="phonenumber">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefoonnummer</th>
         <td mat-cell *matCellDef="let row">{{row.phonenumber}}</td>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- Answer Column -->
       <ng-container matColumnDef="answer">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Correct Beantwoord</th>
         <td mat-cell *matCellDef="let row">{{row.amountOfRightAnsweredQuestions}}</td>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- Time Column -->
       <ng-container matColumnDef="time">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Tijd</th>
         <td mat-cell *matCellDef="let row">{{row.timeInMillis/1000|date:'HH:mm:ss'}}</td>
@@ -46,7 +45,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="50"
+    <mat-paginator #paginator 
+      [length]="dataSource.data.length" 
+      [pageIndex]="0" [pageSize]="50"
       [pageSizeOptions]="[25, 50, 100, 250]">
     </mat-paginator>
   </div>
