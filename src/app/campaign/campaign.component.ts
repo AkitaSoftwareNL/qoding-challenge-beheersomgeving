@@ -27,6 +27,7 @@ export class CampaignComponent implements AfterViewInit {
     this.campaignService.getCampaign()
       .subscribe(campaign => {
         this.dataSource = new CampaignDatasource(campaign);
+        this.setTableData();
       });
   }
 
@@ -47,5 +48,11 @@ export class CampaignComponent implements AfterViewInit {
         }
       );
     }
+  }
+
+  setTableData() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
   }
 }
