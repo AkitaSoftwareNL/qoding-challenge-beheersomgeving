@@ -31,7 +31,7 @@
 
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Verwijderen</th>
-        <td mat-cell *matCellDef="let row"><a routerLink="/{{row.id}}" mat-mini-fab>
+        <td mat-cell *matCellDef="let row"><a (click)="removeCampaign(row)" mat-mini-fab>
             <mat-icon aria-hidden="false" aria-label="icon">delete</mat-icon>
           </a></td>
       </ng-container>
