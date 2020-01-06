@@ -13,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class CampaignService {
   campagneGetURL = 'http://localhost:8080/campaign';
+  removeCampaignURL = 'http://localhost:8080/campaign/delete';
   campagneCreateURL = 'http://localhost:8080/campaign/create';
   campagneRapportGetURL = 'http://localhost:8080/report/';
   countQuestionURL = 'http://localhost:8080/questions/count';
@@ -40,7 +41,7 @@ export class CampaignService {
   addCampaign(campagne: Campaign): Observable<Campaign> {
     return this.http.post<Campaign>(this.campagneCreateURL, campagne, this.httpOptions)
       .pipe(
-        tap((newCampagne: Campaign) => {
+        tap(() => {
           this.toast.info(`Campagne toegevoegd met de naam ${campagne.name}`);
           this.router.navigate(['/campagnes']);
         }),
@@ -73,6 +74,13 @@ export class CampaignService {
       .pipe(
         catchError(this.handleError<number>('ophalen van het aantal vragen', null))
       );
+  }
+
+  removeCampaign(campaign: Campaign): Observable<Campaign> {
+    return this.http.post<Campaign>(this.removeCampaignURL + '/' + campaign.id, '')
+      .pipe(
+        tap( () => this.toast.info('Campagne verwijderd met id ' + campaign.id)),
+        catchError(this.handleError<Campaign>('verwijderen van een campagne')));
   }
 }
 

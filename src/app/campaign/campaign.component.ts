@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -16,7 +16,7 @@ export class CampaignComponent implements AfterViewInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatTable, { static: false }) table: MatTable<Campaign>;
   dataSource: CampaignDatasource;
-  displayedColumns = ['id', 'name', 'share', 'review'];
+  displayedColumns = ['id', 'name', 'share', 'review', 'delete'];
   title = 'Campagnes';
 
   constructor(private campaignService: CampaignService) {
@@ -27,6 +27,7 @@ export class CampaignComponent implements AfterViewInit {
     this.campaignService.getCampaign()
       .subscribe(campaign => {
         this.dataSource = new CampaignDatasource(campaign);
+        this.setTableData();
       });
   }
 
@@ -38,5 +39,20 @@ export class CampaignComponent implements AfterViewInit {
 
   goToLink(campaignId) {
     window.open('share/' + campaignId, '_blank');
+  }
+
+  removeCampaign(campaign: Campaign) {
+    if (confirm('Weet je zeker dat je de campagne "' + campaign.name + '" wilt verwijderen?')) {
+      this.campaignService.removeCampaign(campaign).subscribe(() => {
+          this.getCampaign();
+        }
+      );
+    }
+  }
+
+  setTableData() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
   }
 }
