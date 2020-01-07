@@ -40,7 +40,6 @@ export class MultipleChoiceQuestionCreateComponent {
       if ( (this.questionForm.get('answer_' + i).value)) {
         this.possibleAnswerList.push(new Answer(this.questionForm.get('answer_' + i).value,
           (this.questionForm.get('correctAnswer_' + i).value) ? 1 : 0 ));
-        console.log(this.questionForm.get('correctAnswer_' + i).value);
       }
       i++;
     }
