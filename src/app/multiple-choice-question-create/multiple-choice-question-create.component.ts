@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Question} from '../class/question';
 import {Answer} from '../class/answer';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-multiple-choice-question-create',
@@ -30,7 +31,7 @@ export class MultipleChoiceQuestionCreateComponent {
     correctAnswer_5: [null],
     correctAnswer_6: [null]
   });
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toast: ToastrService) {
   }
 
   onSubmit(form: any) {
@@ -48,7 +49,7 @@ export class MultipleChoiceQuestionCreateComponent {
       const question = new Question(-1, form.question, 'java', 'multiple', form.attachment, this.possibleAnswerList, [], 1);
       this.question.emit(question);
     } else {
-      alert('U heeft geen correcte data opgegeven.');
+      this.toast.error('U heeft geen correcte data opgegeven.');
       window.location.reload();
     }
   }
