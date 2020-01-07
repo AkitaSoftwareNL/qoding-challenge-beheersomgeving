@@ -8,7 +8,7 @@ export class Question {
     public questionType: string,
     public attachment: string,
     public possibleAnswers: Answer[],
-    public givenAnswer: string,
+    public givenAnswer: string[],
     public stateID: number
   ) { }
 

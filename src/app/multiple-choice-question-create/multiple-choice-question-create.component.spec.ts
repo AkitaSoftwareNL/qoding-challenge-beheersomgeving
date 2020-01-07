@@ -48,7 +48,7 @@ describe('MultipleChoiceQuestionCreateComponent', () => {
     possibleAnswerList.push(new Answer('Correct antwoord', 1));
     possibleAnswerList.push(new Answer('Incorrect antwoord', 0));
     component.question.subscribe(q => {
-      expect(q).toEqual(new Question(-1, 'question', 'Java', 'multiple', 'attachment', possibleAnswerList, '', 0));
+      expect(q).toEqual(new Question(-1, 'question', 'Java', 'multiple', 'attachment', possibleAnswerList, [], 0));
     });
   });
 

@@ -70,7 +70,7 @@ describe('QuestionCreateComponent', () => {
   });
 
   it('should call QuestionService', () => {
-    component.onAddQuestion(new Question(-1, 'question', 'category', 'open', 'attachment', [], 'given answer', 1));
+    component.onAddQuestion(new Question(-1, 'question', 'category', 'open', 'attachment', [], ['given answer'], 1));
     expect(spy).toHaveBeenCalled();
   });
 });
