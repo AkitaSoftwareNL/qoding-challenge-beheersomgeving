@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class QuestionCreateComponent {
 
-  QuestionType = 'programmeer';
+  QuestionType = 'open';
 
   constructor(private toast: ToastrService, private questionService: QuestionService) { }
 
@@ -20,12 +20,8 @@ export class QuestionCreateComponent {
 
   onAddQuestion(question: Question) {
     if (question.question != null && question.question !== '') {
-      if (question.questionType != 'program') {
-        if (!(question.startCode == '' || question.unitTest == '' || question.givenAnswer == '')) {
-          this.questionService.addQuestion(question)
-            .subscribe();
-        }
-      }
+      this.questionService.addQuestion(question)
+        .subscribe();
     }
   }
 
