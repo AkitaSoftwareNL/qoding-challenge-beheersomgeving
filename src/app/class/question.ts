@@ -7,8 +7,10 @@ export class Question {
     public categoryType: string,
     public questionType: string,
     public attachment: string,
+    public startCode: string,
     public possibleAnswers: Answer[],
     public givenAnswer: string,
+    public unitTest: string,
     public stateID: number
   ) { }
 

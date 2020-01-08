@@ -23,7 +23,7 @@ import {CampaignCreateComponent} from './campaign-create/campaign-create.compone
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {ReportComponent} from './report/report.component';
@@ -40,6 +40,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SharelinkComponent } from './sharelink/sharelink.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { ProgramQuestionCreateComponent } from './program-question-create/program-question-create.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     ReportParticipantsComponent,
     ReportParticipantQuestionComponent,
     MultipleChoiceQuestionCreateComponent,
-    SharelinkComponent
+    SharelinkComponent,
+    ProgramQuestionCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     ToastrModule.forRoot(),
     MatExpansionModule,
     MatChipsModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    FormsModule,
+    MonacoEditorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
