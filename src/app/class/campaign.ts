@@ -8,9 +8,4 @@ export class Campaign {
   category: string;
   participants: string;
   date: number;
-
-  constructor(name: string, amountOfQuestions: AmountOfQuestionTypeCollection) {
-    this.name = name;
-    this.amountOfQuestions = amountOfQuestions;
-  }
 }

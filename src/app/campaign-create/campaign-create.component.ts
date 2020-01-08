@@ -34,12 +34,14 @@ export class CampaignCreateComponent implements OnInit {
   }
 
   onSubmit(info: campaignDTO) {
-    this.add(new Campaign(info.name, new AmountOfQuestionTypeCollection([
+    let campaign = new Campaign();
+    campaign.name = info.name;
+    campaign.amountOfQuestions = new AmountOfQuestionTypeCollection([
       new AmountOfQuestionType('total', info.amountTotal),
       new AmountOfQuestionType('open', info.amountOpen),
       new AmountOfQuestionType('multiple', info.amountMultiple),
-      new AmountOfQuestionType('program', info.amountProgram)
-    ])));
+      new AmountOfQuestionType('program', info.amountProgram)]);
+    this.add(new Campaign());
   }
 
   add(campaign: Campaign): void {
