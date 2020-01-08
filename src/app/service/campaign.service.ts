@@ -7,6 +7,7 @@ import {ParticipantList} from '../class/participantList';
 import {AnswerListReport} from '../class/answerListReport';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import { AmountOfQuestionTypeCollection } from '../class/amountOfQuestionTypeCollection';
 
 @Injectable({
   providedIn: 'root'
@@ -69,10 +70,10 @@ export class CampaignService {
       );
   }
 
-  getAmountOfQuestions(): Observable<number> {
-    return this.http.get<number>(this.countQuestionURL)
+  getAmountOfQuestions(): Observable<AmountOfQuestionTypeCollection> {
+    return this.http.get<AmountOfQuestionTypeCollection>(this.countQuestionURL)
       .pipe(
-        catchError(this.handleError<number>('ophalen van het aantal vragen', null))
+        catchError(this.handleError<AmountOfQuestionTypeCollection>('ophalen van het aantal vragen', null))
       );
   }
 
