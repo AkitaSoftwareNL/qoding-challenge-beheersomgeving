@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CampaignService } from '../service/campaign.service';
 import { Campaign } from '../class/campaign';
 import { AmountOfQuestionTypeCollection } from '../class/amountOfQuestionTypeCollection';
-import { AmountOfQuestionType } from '../class/amountofQuestionType';
+import { AmountOfQuestionType } from '../class/amountOfQuestionType';
 import { campaignDTO } from '../class/campaignDTO';
 
 @Component({
