@@ -9,7 +9,7 @@ export class Question {
     public attachment: string,
     public startCode: string,
     public possibleAnswers: Answer[],
-    public givenAnswer: string,
+    public givenAnswer: string[],
     public unitTest: string,
     public stateID: number
   ) { }
