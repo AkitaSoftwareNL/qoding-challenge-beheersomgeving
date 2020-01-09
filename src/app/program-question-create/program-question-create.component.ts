@@ -25,12 +25,12 @@ export class ProgramQuestionCreateComponent {
   constructor(private fb: FormBuilder, private toast: ToastrService) { }
 
   onSubmit(form: any) {
-    if (this.code == '' || this.answer == '' || this.test == '') {
-      this.toast.error('Startcode, unittests en voorbeeld antwoord zijn vereist.');
+    if (this.code === '' || this.answer === '' || this.test === '') {
+      this.toast.error('Startcode, unittests en correcte uitwerking zijn vereist.');
       return;
     }
 
-    const question = new Question(-1, form.question, 'JAVA', 'program', form.attachment, this.code, [], this.answer, this.test, 0);
+    const question = new Question(-1, form.question, 'JAVA', 'program', form.attachment, this.code, [], [this.answer], this.test, 0);
     this.question.emit(question);
   }
 
