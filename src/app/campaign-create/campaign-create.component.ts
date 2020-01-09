@@ -15,10 +15,10 @@ export class CampaignCreateComponent implements OnInit {
 
   campagneForm = this.fb.group({
     name: [null, Validators.required],
-    amountTotal: [3, Validators.required],
-    amountOpen: [1, Validators.required],
-    amountMultiple: [1, Validators.required],
-    amountProgram: [1, Validators.required],
+    amountTotal: [1, Validators.required],
+    amountOpen: [0, Validators.required],
+    amountMultiple: [0, Validators.required],
+    amountProgram: [0, Validators.required],
   });
 
   title = 'Campagne aanmaken';
