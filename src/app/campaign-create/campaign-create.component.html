@@ -9,7 +9,8 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Campagnenaam" formControlName="name">
+              <label for="cName"></label>
+              <input id="cName" matInput placeholder="Campagnenaam" formControlName="name">
               <mat-error *ngIf="campagneForm.controls['name'].hasError('required')">
                 Campagnenaam is <strong>vereist</strong>
               </mat-error>
@@ -19,7 +20,25 @@
         <div class="row">
           <div class="col">
             <span class="mat-calendar-body-label">Aantal Vragen</span>
-            <mat-slider thumbLabel min="1" value="3" max="{{max}}" formControlName="amountOfQuestions" class="full-width"></mat-slider>
+            <mat-slider thumbLabel min="0" [(ngModel)]="valueTotal" max="{{maxTotal}}" formControlName="amountTotal" class="full-width"></mat-slider>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="mat-calendar-body-label">Aantal open vragen</span>
+            <mat-slider thumbLabel min="0" [(ngModel)]="valueOpen" max="{{maxOpen}}" formControlName="amountOpen" class="full-width" (change)="updateSlider()"></mat-slider>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="mat-calendar-body-label">Aantal meerkeuzevragen</span>
+            <mat-slider thumbLabel min="0" [(ngModel)]="valueMultiple" max="{{maxMultiple}}" formControlName="amountMultiple" class="full-width" (change)="updateSlider()"></mat-slider>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="mat-calendar-body-label">Aantal programmeervragen</span>
+            <mat-slider thumbLabel min="0" [(ngModel)]="valueProgram" max="{{maxProgram}}" formControlName="amountProgram" class="full-width" (change)="updateSlider()"></mat-slider>
           </div>
         </div>
       </mat-card-content>
