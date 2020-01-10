@@ -5,7 +5,6 @@ import { Campaign } from '../class/campaign';
 import { AmountOfQuestionTypeCollection } from '../class/amountOfQuestionTypeCollection';
 import { AmountOfQuestionType } from '../class/amountOfQuestionType';
 import { campaignDTO } from '../class/campaignDTO';
-import { runInThisContext } from 'vm';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -43,7 +42,7 @@ export class CampaignCreateComponent implements OnInit {
     if (info.amountTotal < (info.amountOpen + info.amountMultiple + info.amountProgram)) {
       this.toast.error('Aantal vragen mag niet lager zijn dan het totale aantal vragen van de verschillende vraagtypes.');
     } else {
-      let campaign = new Campaign();
+      const campaign = new Campaign();
       campaign.name = info.name;
       campaign.amountOfQuestions = new AmountOfQuestionTypeCollection([
         new AmountOfQuestionType('total', info.amountTotal),
@@ -55,7 +54,6 @@ export class CampaignCreateComponent implements OnInit {
   }
 
   add(campaign: Campaign): void {
-    console.log(campaign);
     campaign.name = campaign.name.trim();
     if (!campaign.name) { return; }
     this.campaignService.addCampaign(campaign)
@@ -79,7 +77,7 @@ export class CampaignCreateComponent implements OnInit {
   getValue(array, type) {
     let max = 0;
     array.forEach(questionType => {
-      if (questionType.type == type) {
+      if (questionType.type === type) {
         max = questionType.amount;
       }
     });
