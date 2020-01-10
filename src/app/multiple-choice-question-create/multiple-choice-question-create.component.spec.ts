@@ -44,7 +44,7 @@ describe('MultipleChoiceQuestionCreateComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should emit valueOpen Question object', () => {
+  it('should emit a Question object', () => {
     possibleAnswerList.push(new Answer('Correct antwoord', 1));
     possibleAnswerList.push(new Answer('Incorrect antwoord', 0));
     component.question.subscribe(q => {
