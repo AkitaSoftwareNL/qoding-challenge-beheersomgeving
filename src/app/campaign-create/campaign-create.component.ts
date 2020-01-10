@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { CampaignService } from '../service/campaign.service';
-import { Campaign } from '../class/campaign';
-import { AmountOfQuestionTypeCollection } from '../class/amountOfQuestionTypeCollection';
-import { AmountOfQuestionType } from '../class/amountOfQuestionType';
-import { campaignDTO } from '../class/campaignDTO';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {CampaignService} from '../service/campaign.service';
+import {Campaign} from '../class/campaign';
+import {AmountOfQuestionTypeCollection} from '../class/amountOfQuestionTypeCollection';
+import {AmountOfQuestionType} from '../class/amountOfQuestionType';
+import {campaignDTO} from '../class/campaignDTO';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-campagne-create',
@@ -23,16 +23,18 @@ export class CampaignCreateComponent implements OnInit {
   });
 
   title = 'Campagne aanmaken';
+  maxSelectableAmount = 50;
   maxTotal = 0;
   maxOpen = 0;
   maxMultiple = 0;
   maxProgram = 0;
-  d = 1;
-  a = 0;
-  b = 0;
-  c = 0;
+  valueTotal = 1;
+  valueOpen = 0;
+  valueMultiple = 0;
+  valueProgram = 0;
 
-  constructor(private fb: FormBuilder, private campaignService: CampaignService, private toast: ToastrService) { }
+  constructor(private fb: FormBuilder, private campaignService: CampaignService, private toast: ToastrService) {
+  }
 
   ngOnInit() {
     this.setSlider();
@@ -55,22 +57,24 @@ export class CampaignCreateComponent implements OnInit {
 
   add(campaign: Campaign): void {
     campaign.name = campaign.name.trim();
-    if (!campaign.name) { return; }
+    if (!campaign.name) {
+      return;
+    }
     this.campaignService.addCampaign(campaign)
-      .subscribe(success => { });
+      .subscribe();
   }
 
   updateSlider() {
-    let difference = Math.max(this.d - (this.a + this.b + this.c), 0);
-    this.d = this.a + this.b + this.c + difference;
+    const difference = Math.max(this.valueTotal - (this.valueOpen + this.valueMultiple + this.valueProgram), 0);
+    this.valueTotal = this.valueOpen + this.valueMultiple + this.valueProgram + difference;
   }
 
   setSlider() {
     this.campaignService.getAmountOfQuestions().subscribe(amountOfQuestions => {
-      this.maxTotal = this.selectMaxAmountOfQuestions(this.getValue(amountOfQuestions.collection, "total"));
-      this.maxOpen = this.selectMaxAmountOfQuestions(this.getValue(amountOfQuestions.collection, "open"));
-      this.maxMultiple = this.selectMaxAmountOfQuestions(this.getValue(amountOfQuestions.collection, "multiple"));
-      this.maxProgram = this.selectMaxAmountOfQuestions(this.getValue(amountOfQuestions.collection, "program"));
+      this.maxTotal = Math.min(this.getValue(amountOfQuestions.collection, 'total'), this.maxSelectableAmount);
+      this.maxOpen = Math.min(this.getValue(amountOfQuestions.collection, 'open'), this.maxSelectableAmount);
+      this.maxMultiple = Math.min(this.getValue(amountOfQuestions.collection, 'multiple'), this.maxSelectableAmount);
+      this.maxProgram = Math.min(this.getValue(amountOfQuestions.collection, 'program'), this.maxSelectableAmount);
     });
   }
 
@@ -82,20 +86,5 @@ export class CampaignCreateComponent implements OnInit {
       }
     });
     return max;
-  }
-
-  selectMaxAmountOfQuestions(amount: number) {
-    const maxSelectableAmount = 50;
-    let max = 1;
-
-    if (amount > maxSelectableAmount) {
-      max = maxSelectableAmount;
-    } else if (amount < 0) {
-      max = 1;
-    }
-    if (amount != null) {
-      max = amount;
-    }
-    return amount;
   }
 }

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -11,7 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 
 import { OpenQuestionCreateComponent } from './open-question-create.component';
-import { DebugElement, EventEmitter } from '@angular/core';
+import { DebugElement } from '@angular/core';
 import { Question } from '../class/question';
 
 describe('OpenQuestionCreateComponent', () => {
@@ -48,7 +48,7 @@ describe('OpenQuestionCreateComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should emit a Question object', () => {
+  it('should emit valueOpen Question object', () => {
     component.question.subscribe(q => {
       expect(q).toEqual(new Question(-1, 'question', 'Java', 'open', 'attachment', [], '', 0));
     });
