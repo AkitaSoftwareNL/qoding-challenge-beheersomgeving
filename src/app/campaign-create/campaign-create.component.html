@@ -9,7 +9,8 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Campagnenaam" formControlName="name">
+              <label for="cName"></label>
+              <input id="cName" matInput placeholder="Campagnenaam" formControlName="name">
               <mat-error *ngIf="campagneForm.controls['name'].hasError('required')">
                 Campagnenaam is <strong>vereist</strong>
               </mat-error>
