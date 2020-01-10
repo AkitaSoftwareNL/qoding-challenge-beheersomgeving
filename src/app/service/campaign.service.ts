@@ -7,7 +7,7 @@ import {ParticipantList} from '../class/participantList';
 import {AnswerListReport} from '../class/answerListReport';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import { AmountOfQuestionTypeCollection } from '../class/amountOfQuestionTypeCollection';
+import {AmountOfQuestionTypeCollection} from '../class/amountOfQuestionTypeCollection';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class CampaignService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(error);
-      this.toast.info('Er is wat mis gegaan bij het ' + operation);
+      this.toast.info(error.valueOf().error.message);
       return of(result as T);
     };
   }

@@ -50,7 +50,7 @@ export class QuestionService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
-      this.toast.info('Er is iets mis gegaan met het' + operation);
+      this.toast.info(error.valueOf().error.message);
       return of(result as T);
     };
   }
