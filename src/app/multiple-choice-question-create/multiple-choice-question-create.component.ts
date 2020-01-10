@@ -45,6 +45,7 @@ export class MultipleChoiceQuestionCreateComponent {
     }
     if (this.possibleAnswerList.filter(value => value.isCorrect === 1).length > 0 && this.possibleAnswerList.length > 1) {
       const question = new Question(-1, form.question, 'java', 'multiple', form.attachment, '', this.possibleAnswerList, [], '', 1);
+      console.log(question);
       this.question.emit(question);
     } else {
       this.toast.error('U heeft geen correcte data opgegeven.');
