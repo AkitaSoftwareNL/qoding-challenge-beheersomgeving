@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators, Form } from '@angular/forms';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Question } from '../class/question';
 import {ToastrService} from 'ngx-toastr';
 
@@ -15,12 +15,12 @@ export class ProgramQuestionCreateComponent {
   });
 
   editorOptions = { language: 'java' };
-  code: string = '';
-  answer: string = '';
-  test: string = '';
+  code = '';
+  answer = '';
+  test = '';
 
   @Output() question = new EventEmitter<Question>();
-  title = 'Programmeervraag aanmaken'
+  title = 'Programmeervraag aanmaken';
 
   constructor(private fb: FormBuilder, private toast: ToastrService) { }
 
@@ -32,6 +32,10 @@ export class ProgramQuestionCreateComponent {
 
     const question = new Question(-1, form.question, 'JAVA', 'program', form.attachment, this.code, [], [this.answer], this.test, 0);
     this.question.emit(question);
+  }
+
+  updateAnswer() {
+    this.answer = this.code;
   }
 
 }

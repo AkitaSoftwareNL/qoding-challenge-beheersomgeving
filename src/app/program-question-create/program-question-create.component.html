@@ -21,7 +21,7 @@
             </mat-form-field>
             <p>StartCode:</p>
             <div style="border-style: solid; border-width: 1px; border-color: gainsboro;">
-              <ngx-monaco-editor [options]="editorOptions" [ngModelOptions]="{standalone: true}" [(ngModel)]="code"></ngx-monaco-editor>
+              <ngx-monaco-editor [options]="editorOptions" [ngModelOptions]="{standalone: true}" [(ngModel)]="code" (change)="updateAnswer()"></ngx-monaco-editor>
             </div>
             <p>Unittests:</p>
             <div style="border-style: solid; border-width: 1px; border-color: gainsboro;">
