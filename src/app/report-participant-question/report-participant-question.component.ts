@@ -50,4 +50,16 @@ export class ReportParticipantQuestionComponent implements OnInit {
     }
   }
 
+  QuestionTypeToText(questionType: string) {
+    switch (questionType) {
+      case '1':
+        return 'Open';
+      case '2':
+        return 'Multiple';
+      case '3':
+        return 'Program';
+      default:
+        return 'none';
+    }
+  }
 }
