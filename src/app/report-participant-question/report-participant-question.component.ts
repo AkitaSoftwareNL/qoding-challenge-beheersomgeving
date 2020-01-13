@@ -55,7 +55,7 @@ export class ReportParticipantQuestionComponent implements OnInit {
       case '1':
         return 'Open';
       case '2':
-        return 'Meerkeuze';
+        return 'Multiple';
       case '3':
         return 'Program';
       default:
