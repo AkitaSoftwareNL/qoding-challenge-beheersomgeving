@@ -14,12 +14,12 @@ export class OpenQuestionCreateComponent {
     attachment: [null],
   });
   @Output() question = new EventEmitter<Question>();
-  title = 'Openvraag aanmaken';
+  title = 'Open vraag aanmaken';
 
   constructor(private fb: FormBuilder) { }
 
   onSubmit(form: any) {
-    const question = new Question(-1, form.question, 'Java', 'open', form.attachment, [], '', 0);
+    const question = new Question(-1, form.question, 'Java', 'open', form.attachment, '', [], [], '', 0);
     this.question.emit(question);
   }
 

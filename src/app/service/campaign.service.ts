@@ -7,12 +7,14 @@ import {ParticipantList} from '../class/participantList';
 import {AnswerListReport} from '../class/answerListReport';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {AmountOfQuestionTypeCollection} from '../class/amountOfQuestionTypeCollection';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
   campagneGetURL = 'http://localhost:8080/campaign';
+  removeCampaignURL = 'http://localhost:8080/campaign/delete';
   campagneCreateURL = 'http://localhost:8080/campaign/create';
   campagneRapportGetURL = 'http://localhost:8080/report/';
   countQuestionURL = 'http://localhost:8080/questions/count';
@@ -32,7 +34,7 @@ export class CampaignService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(error);
-      this.toast.info('Er is wat mis gegaan bij het ' + operation);
+      this.toast.info(error.valueOf().error.message);
       return of(result as T);
     };
   }
@@ -40,7 +42,7 @@ export class CampaignService {
   addCampaign(campagne: Campaign): Observable<Campaign> {
     return this.http.post<Campaign>(this.campagneCreateURL, campagne, this.httpOptions)
       .pipe(
-        tap((newCampagne: Campaign) => {
+        tap(() => {
           this.toast.info(`Campagne toegevoegd met de naam ${campagne.name}`);
           this.router.navigate(['/campagnes']);
         }),
@@ -68,11 +70,18 @@ export class CampaignService {
       );
   }
 
-  getAmountOfQuestions(): Observable<number> {
-    return this.http.get<number>(this.countQuestionURL)
+  getAmountOfQuestions(): Observable<AmountOfQuestionTypeCollection> {
+    return this.http.get<AmountOfQuestionTypeCollection>(this.countQuestionURL)
       .pipe(
-        catchError(this.handleError<number>('ophalen van het aantal vragen', null))
+        catchError(this.handleError<AmountOfQuestionTypeCollection>('ophalen van het aantal vragen', null))
       );
+  }
+
+  removeCampaign(campaign: Campaign): Observable<Campaign> {
+    return this.http.post<Campaign>(this.removeCampaignURL + '/' + campaign.id, '')
+      .pipe(
+        tap( () => this.toast.info('Campagne verwijderd met id ' + campaign.id)),
+        catchError(this.handleError<Campaign>('verwijderen van een campagne')));
   }
 }
 

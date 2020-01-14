@@ -1,7 +1,9 @@
+import { AmountOfQuestionTypeCollection } from './amountOfQuestionTypeCollection';
+
 export class Campaign {
   id: number;
   name: string;
-  amountOfQuestions: bigint;
+  amountOfQuestions: AmountOfQuestionTypeCollection;
   startedBy: string;
   category: string;
   participants: string;

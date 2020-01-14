@@ -1,4 +1,4 @@
-import { Answer } from './answer';
+import {Answer} from './answer';
 
 export class Question {
   constructor(
@@ -7,8 +7,10 @@ export class Question {
     public categoryType: string,
     public questionType: string,
     public attachment: string,
+    public startCode: string,
     public possibleAnswers: Answer[],
-    public givenAnswer: string,
+    public givenAnswers: string[],
+    public unitTest: string,
     public stateID: number
   ) { }
 

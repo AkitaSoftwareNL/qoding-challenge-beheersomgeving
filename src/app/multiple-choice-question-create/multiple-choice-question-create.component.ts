@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Question} from '../class/question';
 import {Answer} from '../class/answer';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-multiple-choice-question-create',
@@ -23,9 +24,14 @@ export class MultipleChoiceQuestionCreateComponent {
     answer_4: [null],
     answer_5: [null],
     answer_6: [null],
-    correctAnswer: [1, Validators.required],
+    correctAnswer_1: [null, Validators.required],
+    correctAnswer_2: [null],
+    correctAnswer_3: [null],
+    correctAnswer_4: [null],
+    correctAnswer_5: [null],
+    correctAnswer_6: [null]
   });
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toast: ToastrService) {
   }
 
   onSubmit(form: any) {
@@ -33,16 +39,16 @@ export class MultipleChoiceQuestionCreateComponent {
     while (i <= this.maxAmountOfQuestions.length) {
       if ( (this.questionForm.get('answer_' + i).value)) {
         this.possibleAnswerList.push(new Answer(this.questionForm.get('answer_' + i).value,
-          (Number(this.questionForm.get('correctAnswer').value) === i) ? 1 : 0 ));
+          (this.questionForm.get('correctAnswer_' + i).value) ? 1 : 0 ));
       }
       i++;
     }
-    if (this.possibleAnswerList.filter(value => value.isCorrect === 1).length === 1 && this.possibleAnswerList.length > 1) {
-      const question = new Question(-1, form.question, 'java', 'multiple', form.attachment, this.possibleAnswerList, '', 1);
+    if (this.possibleAnswerList.filter(value => value.isCorrect === 1).length > 0 && this.possibleAnswerList.length > 1) {
+      const question = new Question(-1, form.question, 'java', 'multiple', form.attachment, '', this.possibleAnswerList, [], '', 1);
       this.question.emit(question);
     } else {
-      alert('U heeft geen correcte data opgegeven.');
-      window.location.reload();
+      this.toast.error('U heeft geen correcte data opgegeven.');
+      this.possibleAnswerList = [];
     }
   }
 }

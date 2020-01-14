@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {CampaignService} from '../service/campaign.service';
 import {Campaign} from '../class/campaign';
+import {AmountOfQuestionTypeCollection} from '../class/amountOfQuestionTypeCollection';
+import {AmountOfQuestionType} from '../class/amountOfQuestionType';
+import {campaignDTO} from '../class/campaignDTO';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-campagne-create',
@@ -9,38 +13,78 @@ import {Campaign} from '../class/campaign';
   styleUrls: ['./campaign-create.component.css']
 })
 export class CampaignCreateComponent implements OnInit {
+
   campagneForm = this.fb.group({
     name: [null, Validators.required],
-    amountOfQuestions: [3, Validators.required],
+    amountTotal: [0, Validators.required],
+    amountOpen: [0, Validators.required],
+    amountMultiple: [0, Validators.required],
+    amountProgram: [0, Validators.required],
   });
 
   title = 'Campagne aanmaken';
-  max = 1;
-  numberOfQuestions: number;
+  maxSelectableAmount = 50;
+  maxTotal = 0;
+  maxOpen = 0;
+  maxMultiple = 0;
+  maxProgram = 0;
+  valueTotal = 1;
+  valueOpen = 0;
+  valueMultiple = 0;
+  valueProgram = 0;
 
-  constructor(private fb: FormBuilder, private campaignService: CampaignService) {}
+  constructor(private fb: FormBuilder, private campaignService: CampaignService, private toast: ToastrService) {
+  }
 
   ngOnInit() {
     this.setSlider();
   }
 
-  onSubmit(info: Campaign) {
-    this.add(info);
+  onSubmit(info: campaignDTO) {
+    if (info.amountTotal < (info.amountOpen + info.amountMultiple + info.amountProgram)) {
+      this.toast.error('Aantal vragen mag niet lager zijn dan het totale aantal vragen van de verschillende vraagtypes.');
+    } else {
+      const campaign = new Campaign();
+      campaign.name = info.name;
+      campaign.amountOfQuestions = new AmountOfQuestionTypeCollection([
+        new AmountOfQuestionType('total', info.amountTotal),
+        new AmountOfQuestionType('open', info.amountOpen),
+        new AmountOfQuestionType('multiple', info.amountMultiple),
+        new AmountOfQuestionType('program', info.amountProgram)]);
+      this.add(campaign);
+    }
   }
 
   add(campaign: Campaign): void {
     campaign.name = campaign.name.trim();
-    if (!campaign.name) { return; }
+    if (!campaign.name) {
+      return;
+    }
     this.campaignService.addCampaign(campaign)
-      .subscribe(success => {});
+      .subscribe();
+  }
+
+  updateSlider() {
+    const difference = Math.max(this.valueTotal - (this.valueOpen + this.valueMultiple + this.valueProgram), 0);
+    this.valueTotal = this.valueOpen + this.valueMultiple + this.valueProgram + difference;
   }
 
   setSlider() {
-    this.campaignService.getAmountOfQuestions().subscribe(amount => {
-      this.numberOfQuestions = amount;
-      const maxSelectableAmount = 50;
-      if (amount > maxSelectableAmount) { this.max = maxSelectableAmount; } else if (amount < 0 ) { this.max = 1; }
-      if (amount != null ) { this.max = amount; }
+    this.campaignService.getAmountOfQuestions().subscribe(amountOfQuestions => {
+      this.maxTotal = Math.min(this.getValue(amountOfQuestions.collection, 'total'), this.maxSelectableAmount);
+      this.maxOpen = Math.min(this.getValue(amountOfQuestions.collection, 'open'), this.maxSelectableAmount);
+      this.maxMultiple = Math.min(this.getValue(amountOfQuestions.collection, 'multiple'), this.maxSelectableAmount);
+      this.maxProgram = Math.min(this.getValue(amountOfQuestions.collection, 'program'), this.maxSelectableAmount);
     });
+  }
+
+  getValue(array, type) {
+    let max = 0;
+    array.forEach(questionType => {
+      if (questionType.type === type) {
+        max = questionType.amount;
+      }
+    });
+    return max;
   }
 }

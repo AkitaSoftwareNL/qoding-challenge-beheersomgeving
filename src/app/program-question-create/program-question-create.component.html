@@ -19,6 +19,18 @@
                 Bijlage is <strong>vereist</strong>
               </mat-error>
             </mat-form-field>
+            <p>StartCode:</p>
+            <div style="border-style: solid; border-width: 1px; border-color: gainsboro;">
+              <ngx-monaco-editor [options]="editorOptions" [ngModelOptions]="{standalone: true}" [(ngModel)]="code" (change)="updateAnswer()"></ngx-monaco-editor>
+            </div>
+            <p>Unittests:</p>
+            <div style="border-style: solid; border-width: 1px; border-color: gainsboro;">
+              <ngx-monaco-editor [options]="editorOptions" [ngModelOptions]="{standalone: true}" [(ngModel)]="test"></ngx-monaco-editor>
+            </div>
+            <p>Correcte uitwerking:</p>
+            <div style="border-style: solid; border-width: 1px; border-color: gainsboro;">
+              <ngx-monaco-editor [options]="editorOptions" [ngModelOptions]="{standalone: true}" [(ngModel)]="answer"></ngx-monaco-editor>
+            </div>
           </div>
         </div>
       </mat-card-content>
