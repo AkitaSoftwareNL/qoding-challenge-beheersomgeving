@@ -69,6 +69,7 @@ export class ReportDatasource extends DataSource<Campaign> {
         case 'campagne': return compare(a.name, b.name, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         case 'datum': return compare(+a.date, +b.date, isAsc);
+        case 'status': return compare(+a.state, +b.state, isAsc);
         default: return 0;
       }
     });
