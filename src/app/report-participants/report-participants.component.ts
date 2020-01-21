@@ -39,7 +39,6 @@ export class ReportParticipantsComponent implements AfterViewInit, OnInit {
     this.campagneService.getParticipantsCampaign(campagneID)
       .subscribe(participant => {
         this.dataSource = new ReportParticipantsDatasource(participant.participants);
-        console.log(this.dataSource);
         this.title = participant.campaignName;
       });
   }
@@ -61,9 +60,6 @@ export class ReportParticipantsComponent implements AfterViewInit, OnInit {
     let sec: string = s < 10 ? `0${s}` : `${s}`;
     let min: string = m < 10 ? `0${m}` : `${m}`;
     let hour: string = h < 10 ? `0${h}` : `${h}`;
-
-
-    console.log();
 
     return `${hour}:${min}:${sec}`;
   }

@@ -50,7 +50,11 @@ export class QuestionService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
-      this.toast.info(error.valueOf().error.message);
+      this.toast.info(error.valueOf().error.details +
+        '. ' + error.valueOf().error.nextAction +
+        '\n' + error.valueOf().error.support, error.valueOf().error.message, {
+        timeOut: 4000
+      });
       return of(result as T);
     };
   }
