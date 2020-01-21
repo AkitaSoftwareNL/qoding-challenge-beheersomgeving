@@ -4,7 +4,7 @@ import {CampaignService} from '../service/campaign.service';
 import {Campaign} from '../class/campaign';
 import {AmountOfQuestionTypeCollection} from '../class/amountOfQuestionTypeCollection';
 import {AmountOfQuestionType} from '../class/amountOfQuestionType';
-import {campaignDTO} from '../class/campaignDTO';
+import {CampaignDTO} from '../class/campaignDTO';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -40,7 +40,7 @@ export class CampaignCreateComponent implements OnInit {
     this.setSlider();
   }
 
-  onSubmit(info: campaignDTO) {
+  onSubmit(info: CampaignDTO) {
     if (info.amountTotal < (info.amountOpen + info.amountMultiple + info.amountProgram)) {
       this.toast.error('Aantal vragen mag niet lager zijn dan het totale aantal vragen van de verschillende vraagtypes.');
     } else {
