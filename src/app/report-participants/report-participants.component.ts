@@ -58,12 +58,9 @@ export class ReportParticipantsComponent implements AfterViewInit, OnInit {
     m = Math.floor((timeInMiliseconds / 1000 / 60 / 60 - h) * 60);
     s = Math.floor(((timeInMiliseconds / 1000 / 60 / 60 - h) * 60 - m) * 60);
 
-    let sec: string = s < 10 ? `0${s}` : `${s}`;
-    let min: string = m < 10 ? `0${m}` : `${m}`;
-    let hour: string = h < 10 ? `0${h}` : `${h}`;
-
-
-    console.log();
+    const sec: string = s < 10 ? `0${s}` : `${s}`;
+    const min: string = m < 10 ? `0${m}` : `${m}`;
+    const hour: string = h < 10 ? `0${h}` : `${h}`;
 
     return `${hour}:${min}:${sec}`;
   }
