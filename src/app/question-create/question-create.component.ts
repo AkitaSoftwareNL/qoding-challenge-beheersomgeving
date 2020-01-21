@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Question } from '../class/question';
 import { QuestionService } from '../service/question.service';
 import { ToastrService } from 'ngx-toastr';

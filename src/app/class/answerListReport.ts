@@ -1,6 +1,5 @@
 import {AnswerReport} from './answerReport';
 
-
 export class AnswerListReport {
   firstname: string;
   insertion: string;
