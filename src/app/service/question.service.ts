@@ -24,7 +24,7 @@ export class QuestionService {
   addQuestion(question: Question) {
     return this.http.post<Question>(this.questionCreate, question, this.httpOptions)
       .pipe(
-        tap((newQuestion: Question) => {
+        tap(() => {
           this.toast.info(`Vraag Toegevoegd`);
           this.router.navigate(['/vragen']);
         }),
@@ -62,10 +62,10 @@ export class QuestionService {
       );
   }
 
-  removeQuestion(vraag: QuestionOverview): Observable<QuestionOverview> {
-    return this.http.post<QuestionOverview>(this.removeQuestionURL + '/' + vraag.questionID, '')
+  removeQuestion(question: QuestionOverview): Observable<QuestionOverview> {
+    return this.http.post<QuestionOverview>(this.removeQuestionURL + '/' + question.questionID, '')
       .pipe(
-        tap( (newVraag: QuestionOverview) => this.toast.info('Vraag verwijderd met id ' + vraag.questionID)),
+        tap( () => this.toast.info('Vraag verwijderd met id ' + question.questionID)),
         catchError(this.handleError<QuestionOverview>('verwijderen van een vraag')));
   }
 

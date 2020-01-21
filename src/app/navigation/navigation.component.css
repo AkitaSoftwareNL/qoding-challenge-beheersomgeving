@@ -16,6 +16,11 @@
   z-index: 1;
 }
 
+.button-create {
+  background-color: white;
+  color: rgb(124, 112, 161);
+}
+
 mat-toolbar img {
   width: 120px;
   left: 20px;

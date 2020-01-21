@@ -1,5 +1,4 @@
-
-export class campaignDTO {
+export class CampaignDTO {
     constructor(
         public name: string,
         public amountTotal: number,

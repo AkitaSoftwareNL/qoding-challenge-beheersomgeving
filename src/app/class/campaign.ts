@@ -6,6 +6,9 @@ export class Campaign {
   amountOfQuestions: AmountOfQuestionTypeCollection;
   startedBy: string;
   category: string;
-  participants: string;
+  participants: any;
+  state: number;
   date: number;
 }
+
+
